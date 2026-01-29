@@ -36,11 +36,20 @@ export default function ChatShell({ canWrite }: { canWrite: boolean }) {
     setText("");
 
     setLoading(true);
-    const res = await parseAssistant(userMsg.text);
-    setLoading(false);
-
-    if (!res.ok) {
-      setError(res.error.message);
+    try {
+      const res = await parseAssistant(userMsg.text);
+      setPending(res.transaction);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          text: `Proposta: ${formatProposal(res.transaction)}. Confirma?`
+        }
+      ]);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel interpretar";
+      setError(message);
       setMessages((prev) => [
         ...prev,
         {
@@ -49,41 +58,32 @@ export default function ChatShell({ canWrite }: { canWrite: boolean }) {
           text: "Nao consegui interpretar. Tente novamente com valor e tipo."
         }
       ]);
-      return;
+    } finally {
+      setLoading(false);
     }
-
-    setPending(res.data.transaction);
-    setMessages((prev) => [
-      ...prev,
-      {
-        id: crypto.randomUUID(),
-        role: "assistant",
-        text: `Proposta: ${formatProposal(res.data.transaction)}. Confirma?`
-      }
-    ]);
   }
 
   async function confirm() {
     if (!pending) return;
     setError(null);
     setLoading(true);
-    const res = await confirmAssistant(pending);
-    setLoading(false);
-
-    if (!res.ok) {
-      setError(res.error.message);
-      return;
+    try {
+      await confirmAssistant(pending);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          text: "Lancamento confirmado e salvo!"
+        }
+      ]);
+      setPending(null);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel confirmar";
+      setError(message);
+    } finally {
+      setLoading(false);
     }
-
-    setMessages((prev) => [
-      ...prev,
-      {
-        id: crypto.randomUUID(),
-        role: "assistant",
-        text: "Lancamento confirmado e salvo!"
-      }
-    ]);
-    setPending(null);
   }
 
   function cancel() {

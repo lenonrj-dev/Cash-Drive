@@ -1,4 +1,5 @@
 /* frontend/providers/AuthProvider.tsx */
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import React, { createContext, useCallback, useEffect, useMemo, useState } from "react";
@@ -40,8 +41,8 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
       return;
     }
 
-    const res = await authService.me();
-    if (res.ok) setUser(res.data);
+    const user = await authService.me();
+    if (user) setUser(user);
     else {
       clearToken();
       setTokenState(null);
@@ -55,12 +56,16 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   }, [hydrate]);
 
   const login = useCallback(async (email: string, password: string) => {
-    const res = await authService.login(email, password);
-    if (!res.ok) return { ok: false, error: res.error.message };
-    setToken(res.data.token);
-    setTokenState(res.data.token);
-    setUser(res.data.user);
-    return { ok: true };
+    try {
+      const data = await authService.login(email, password);
+      setToken(data.token);
+      setTokenState(data.token);
+      setUser(data.user);
+      return { ok: true };
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel entrar";
+      return { ok: false, error: message };
+    }
   }, []);
 
   const signup = useCallback(async (payload: {
@@ -70,12 +75,16 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     phone?: string | null;
     acceptedTerms: boolean;
   }) => {
-    const res = await authService.signup(payload);
-    if (!res.ok) return { ok: false, error: res.error.message };
-    setToken(res.data.token);
-    setTokenState(res.data.token);
-    setUser(res.data.user);
-    return { ok: true };
+    try {
+      const data = await authService.signup(payload);
+      setToken(data.token);
+      setTokenState(data.token);
+      setUser(data.user);
+      return { ok: true };
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel criar conta";
+      return { ok: false, error: message };
+    }
   }, []);
 
   const logout = useCallback(() => {

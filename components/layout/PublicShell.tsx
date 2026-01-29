@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { routes } from "../../lib/routes";
 import Button from "../ui/Button";
+import EnvWarning from "../common/EnvWarning";
 
 export default function PublicShell({ children }: { children: React.ReactNode }) {
   return (
@@ -34,7 +35,10 @@ export default function PublicShell({ children }: { children: React.ReactNode })
         </div>
       </header>
 
-      <main className="w-full px-4 py-10 sm:px-6 lg:px-10 2xl:px-14">{children}</main>
+      <main className="w-full px-4 py-10 sm:px-6 lg:px-10 2xl:px-14">
+        <EnvWarning className="mb-4" />
+        {children}
+      </main>
 
       <footer className="border-t border-zinc-200/70 py-10">
         <div className="w-full px-4 text-sm text-zinc-500 sm:px-6 lg:px-10 2xl:px-14">

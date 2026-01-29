@@ -28,9 +28,14 @@ export default function BillsView() {
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
-    const res = await listBills();
-    if (res.ok) setItems(res.data);
-    else setError(res.error.message);
+    try {
+      const res = await listBills();
+      setItems(res.items);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel carregar";
+      setError(message);
+      setItems([]);
+    }
     setLoading(false);
   }, []);
 
@@ -56,26 +61,30 @@ export default function BillsView() {
     if (!canWrite) return;
     const ok = window.confirm("Deseja excluir esta conta?");
     if (!ok) return;
-    const res = await deleteBill(bill.id);
-    if (!res.ok) {
-      setError(res.error.message);
-      return;
+    try {
+      await deleteBill(bill.id);
+      load();
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel excluir";
+      setError(message);
     }
-    load();
   };
 
   const onSave = async (payload: BillInput) => {
     setFormError(null);
     setSaving(true);
-    const res = editing ? await updateBill(editing.id, payload) : await createBill(payload);
-    setSaving(false);
-    if (!res.ok) {
-      setFormError(res.error.message);
-      return;
+    try {
+      if (editing) await updateBill(editing.id, payload);
+      else await createBill(payload);
+      setModalOpen(false);
+      setEditing(null);
+      load();
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel salvar";
+      setFormError(message);
+    } finally {
+      setSaving(false);
     }
-    setModalOpen(false);
-    setEditing(null);
-    load();
   };
 
   return (

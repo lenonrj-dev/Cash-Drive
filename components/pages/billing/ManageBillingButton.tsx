@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import Button from "../../ui/Button";
 import Alert from "../../ui/Alert";
-import { openPortal } from "../../../services/billingService";
+import { openBillingPortal } from "../../../services/billingService";
 
 export default function ManageBillingButton() {
   const [busy, setBusy] = useState(false);
@@ -13,16 +13,14 @@ export default function ManageBillingButton() {
   async function onClick() {
     setBusy(true);
     setError(null);
-    const res = await openPortal();
-    setBusy(false);
-
-    if (!res.ok) {
-      setError(res.error.message);
-      return;
-    }
-
-    if (res.data.url) {
-      window.location.href = res.data.url;
+    try {
+      const url = await openBillingPortal();
+      window.location.href = url;
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel abrir o portal";
+      setError(message);
+    } finally {
+      setBusy(false);
     }
   }
 

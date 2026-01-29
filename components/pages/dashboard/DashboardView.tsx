@@ -17,7 +17,13 @@ export default function DashboardView() {
   const billing = useContext(BillingContext);
   const canWrite = useMemo(() => Boolean(billing?.canWrite), [billing?.canWrite]);
 
-  const [summary, setSummary] = useState<DashboardSummary | null>(null);
+  const [summary, setSummary] = useState<DashboardSummary>({
+    balance: 0,
+    income: 0,
+    expense: 0,
+    goalsMissing: 0,
+    billsMissing: 0
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -26,14 +32,16 @@ export default function DashboardView() {
     (async () => {
       setLoading(true);
       setError(null);
-      const res = await getDashboardSummary();
-      if (!alive) return;
-      if (res.ok) {
-        setSummary(res.data);
-      } else {
-        setError(res.error.message);
+      try {
+        const res = await getDashboardSummary();
+        if (!alive) return;
+        setSummary(res);
+      } catch (err) {
+        const message = err instanceof Error ? err.message : "Nao foi possivel carregar";
+        setError(message);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     })();
     return () => {
       alive = false;

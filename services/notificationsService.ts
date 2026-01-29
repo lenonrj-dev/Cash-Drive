@@ -1,11 +1,15 @@
 /* frontend/services/notificationsService.ts */
 import { api } from "./http";
-import type { ApiResponse, AppNotification } from "../types/api";
+import type { AppNotification } from "../types/api";
 
-export function listNotifications(): Promise<ApiResponse<AppNotification[]>> {
-  return api<AppNotification[]>("/notifications", { method: "GET" });
+export async function listNotifications(): Promise<{ items: AppNotification[] }> {
+  const res = await api<AppNotification[]>("/notifications", { method: "GET" });
+  if (!res.ok) return { items: [] };
+  return { items: Array.isArray(res.data) ? res.data : [] };
 }
 
-export function markNotificationRead(id: string) {
-  return api<AppNotification>(`/notifications/${id}/read`, { method: "PATCH" });
+export async function markNotificationRead(id: string): Promise<AppNotification> {
+  const res = await api<AppNotification>(`/notifications/${id}/read`, { method: "PATCH" });
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }

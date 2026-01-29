@@ -13,16 +13,14 @@ export default function CheckoutButton({ planId, trialDays }: { planId: string; 
   async function onClick() {
     setBusy(true);
     setError(null);
-    const res = await createCheckout(planId);
-    setBusy(false);
-
-    if (!res.ok) {
-      setError(res.error.message);
-      return;
-    }
-
-    if (res.data.url) {
-      window.location.href = res.data.url;
+    try {
+      const url = await createCheckout(planId);
+      window.location.href = url;
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel iniciar o checkout";
+      setError(message);
+    } finally {
+      setBusy(false);
     }
   }
 

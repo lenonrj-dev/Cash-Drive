@@ -28,9 +28,14 @@ export default function GoalsView() {
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
-    const res = await listGoals();
-    if (res.ok) setItems(res.data);
-    else setError(res.error.message);
+    try {
+      const res = await listGoals();
+      setItems(res.items);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel carregar";
+      setError(message);
+      setItems([]);
+    }
     setLoading(false);
   }, []);
 
@@ -56,26 +61,30 @@ export default function GoalsView() {
     if (!canWrite) return;
     const ok = window.confirm("Deseja excluir esta meta?");
     if (!ok) return;
-    const res = await deleteGoal(goal.id);
-    if (!res.ok) {
-      setError(res.error.message);
-      return;
+    try {
+      await deleteGoal(goal.id);
+      load();
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel excluir";
+      setError(message);
     }
-    load();
   };
 
   const onSave = async (payload: GoalInput) => {
     setFormError(null);
     setSaving(true);
-    const res = editing ? await updateGoal(editing.id, payload) : await createGoal(payload);
-    setSaving(false);
-    if (!res.ok) {
-      setFormError(res.error.message);
-      return;
+    try {
+      if (editing) await updateGoal(editing.id, payload);
+      else await createGoal(payload);
+      setModalOpen(false);
+      setEditing(null);
+      load();
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel salvar";
+      setFormError(message);
+    } finally {
+      setSaving(false);
     }
-    setModalOpen(false);
-    setEditing(null);
-    load();
   };
 
   return (

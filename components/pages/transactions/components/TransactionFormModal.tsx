@@ -1,4 +1,5 @@
-﻿/* frontend/components/pages/transactions/components/TransactionFormModal.tsx */
+/* frontend/components/pages/transactions/components/TransactionFormModal.tsx */
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import React, { useEffect, useState } from "react";

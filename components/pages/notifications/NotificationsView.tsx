@@ -19,10 +19,10 @@ export default function NotificationsView() {
     let alive = true;
     (async () => {
       setLoading(true);
+      setError(null);
       const res = await listNotifications();
       if (!alive) return;
-      if (res.ok) setItems(res.data);
-      else setError(res.error.message);
+      setItems(res.items);
       setLoading(false);
     })();
     return () => {
@@ -31,12 +31,13 @@ export default function NotificationsView() {
   }, []);
 
   async function markRead(id: string) {
-    const res = await markNotificationRead(id);
-    if (!res.ok) {
-      setError(res.error.message);
-      return;
+    try {
+      await markNotificationRead(id);
+      setItems((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)));
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel atualizar";
+      setError(message);
     }
-    setItems((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)));
   }
 
   return (

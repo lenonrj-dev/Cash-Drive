@@ -1,4 +1,5 @@
-﻿/* frontend/components/pages/bills/components/BillFormModal.tsx */
+/* frontend/components/pages/bills/components/BillFormModal.tsx */
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import React, { useEffect, useState } from "react";

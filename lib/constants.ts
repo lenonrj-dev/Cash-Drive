@@ -5,7 +5,7 @@ export const API_URL =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || "http://localhost:4000";
 
 export const STORAGE_KEYS = {
-  token: "cashdrive:token",
+  token: "token",
   theme: "cashdrive:theme",
 } as const;
 

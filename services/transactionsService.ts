@@ -1,6 +1,6 @@
 /* frontend/services/transactionsService.ts */
 import { api } from "./http";
-import type { ApiResponse, Transaction, TransactionInput } from "../types/api";
+import type { Transaction, TransactionInput } from "../types/api";
 import type { TransactionType } from "../types/common";
 
 type ListFilters = {
@@ -21,18 +21,35 @@ function buildQuery(filters?: ListFilters) {
   return qs ? `?${qs}` : "";
 }
 
-export function listTransactions(filters?: ListFilters): Promise<ApiResponse<Transaction[]>> {
-  return api<Transaction[]>(`/transactions${buildQuery(filters)}`, { method: "GET" });
+export async function listTransactions(filters?: ListFilters): Promise<{ items: Transaction[] }> {
+  const res = await api<Transaction[]>(`/transactions${buildQuery(filters)}`, { method: "GET" });
+  if (!res.ok) return { items: [] };
+  return { items: Array.isArray(res.data) ? res.data : [] };
 }
 
-export function createTransaction(payload: TransactionInput) {
-  return api<Transaction>("/transactions", { method: "POST", body: payload });
+export async function createTransaction(payload: TransactionInput): Promise<Transaction> {
+  const res = await api<Transaction>("/transactions", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }
 
-export function updateTransaction(id: string, payload: Partial<TransactionInput>) {
-  return api<Transaction>(`/transactions/${id}`, { method: "PATCH", body: payload });
+export async function updateTransaction(
+  id: string,
+  payload: Partial<TransactionInput>
+): Promise<Transaction> {
+  const res = await api<Transaction>(`/transactions/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }
 
-export function deleteTransaction(id: string) {
-  return api<{ id: string }>(`/transactions/${id}`, { method: "DELETE" });
+export async function deleteTransaction(id: string): Promise<{ id: string }> {
+  const res = await api<{ id: string }>(`/transactions/${id}`, { method: "DELETE" });
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }

@@ -1,29 +1,35 @@
 /* frontend/services/authService.ts */
 import { api } from "./http";
-import type { AuthLoginResponse, MeResponse, ApiResponse } from "../types/api";
+import type { AuthLoginResponse, MeResponse } from "../types/api";
 
-export function login(email: string, password: string) {
-  return api<AuthLoginResponse>("/auth/login", {
+export async function login(email: string, password: string): Promise<AuthLoginResponse> {
+  const res = await api<AuthLoginResponse>("/auth/login", {
     method: "POST",
-    body: { email, password },
-    auth: false,
+    body: JSON.stringify({ email, password }),
   });
+
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }
 
-export function signup(payload: {
+export async function signup(payload: {
   name: string;
   email: string;
   password: string;
   phone?: string | null;
   acceptedTerms: boolean;
-}) {
-  return api<AuthLoginResponse>("/auth/signup", {
+}): Promise<AuthLoginResponse> {
+  const res = await api<AuthLoginResponse>("/auth/signup", {
     method: "POST",
-    body: payload,
-    auth: false,
+    body: JSON.stringify(payload),
   });
+
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }
 
-export function me(): Promise<ApiResponse<MeResponse>> {
-  return api<MeResponse>("/auth/me", { method: "GET" });
+export async function me(): Promise<MeResponse | null> {
+  const res = await api<MeResponse>("/auth/me", { method: "GET" });
+  if (!res.ok) return null;
+  return res.data;
 }

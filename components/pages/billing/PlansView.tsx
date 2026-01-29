@@ -21,7 +21,7 @@ export default function PlansView({ variant }: { variant: "public" | "inApp" }) 
       setLoading(true);
       const res = await getPlans();
       if (!alive) return;
-      setPlans(res.ok ? res.data.plans : []);
+      setPlans(res.plans);
       setLoading(false);
     })();
     return () => {
@@ -57,7 +57,7 @@ export default function PlansView({ variant }: { variant: "public" | "inApp" }) 
         </div>
       ) : !hasPlans ? (
         <Card className="p-6">
-          <p className="text-sm text-zinc-600">Nao foi possivel carregar os planos agora.</p>
+          <p className="text-sm text-zinc-600">Planos indisponiveis no momento.</p>
         </Card>
       ) : (
         <PlansGrid plans={plans} />

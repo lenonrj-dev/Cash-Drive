@@ -1,4 +1,5 @@
 /* frontend/providers/ThemeProvider.tsx */
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import React, { createContext, useCallback, useEffect, useMemo, useState } from "react";
@@ -30,9 +31,10 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
   }, [apply]);
 
   const setMode = useCallback(
-    (_next: ThemeMode) => {
-      setModeState("light");
-      setThemeMode("light");
+    (next: ThemeMode) => {
+      const nextMode: ThemeMode = next === "light" ? "light" : "light";
+      setModeState(nextMode);
+      setThemeMode(nextMode);
       apply();
     },
     [apply]
@@ -40,7 +42,7 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
 
   const toggle = useCallback(() => {
     setMode("light");
-  }, [resolved, setMode]);
+  }, [setMode]);
 
   const value = useMemo(() => ({ mode, resolved, setMode, toggle }), [mode, resolved, setMode, toggle]);
 

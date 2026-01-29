@@ -21,7 +21,7 @@ export default function PlansAside() {
       setLoading(true);
       const res = await getPlans();
       if (!alive) return;
-      setPlans(res.ok ? res.data.plans : []);
+      setPlans(res.plans);
       setLoading(false);
     })();
     return () => {
@@ -83,7 +83,7 @@ export default function PlansAside() {
           ))
         ) : (
           <div className="rounded-2xl border border-zinc-200/70 bg-white/70 p-4 text-sm text-zinc-600">
-            Nao foi possivel carregar os planos agora. Voce ainda pode entrar/criar conta e ver o painel em modo leitura.
+            Planos indisponiveis no momento. Voce ainda pode entrar/criar conta e ver o painel em modo leitura.
           </div>
         )}
       </div>

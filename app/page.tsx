@@ -53,7 +53,7 @@ export default function Page() {
               </li>
               <li className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-teal-500" />
-                Metas com "faltam R$ X"
+                Metas com &quot;faltam R$ X&quot;
               </li>
               <li className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-teal-500" />

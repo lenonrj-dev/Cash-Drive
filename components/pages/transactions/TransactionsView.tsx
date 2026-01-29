@@ -40,17 +40,18 @@ export default function TransactionsView() {
     setLoading(true);
     setError(null);
 
-    const res = await listTransactions({
-      search: search.trim() ? search.trim() : undefined,
-      from: from ? new Date(from).toISOString() : undefined,
-      to: to ? new Date(to).toISOString() : undefined,
-      type: type || undefined
-    });
-
-    if (res.ok) {
-      setItems(res.data);
-    } else {
-      setError(res.error.message);
+    try {
+      const res = await listTransactions({
+        search: search.trim() ? search.trim() : undefined,
+        from: from ? new Date(from).toISOString() : undefined,
+        to: to ? new Date(to).toISOString() : undefined,
+        type: type || undefined
+      });
+      setItems(res.items);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel carregar";
+      setError(message);
+      setItems([]);
     }
     setLoading(false);
   }, [search, from, to, type]);
@@ -81,30 +82,30 @@ export default function TransactionsView() {
     const ok = window.confirm("Deseja excluir este lancamento?");
     if (!ok) return;
 
-    const res = await deleteTransaction(item.id);
-    if (!res.ok) {
-      setError(res.error.message);
-      return;
+    try {
+      await deleteTransaction(item.id);
+      load();
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel excluir";
+      setError(message);
     }
-    load();
   };
 
   const onSave = async (payload: TransactionInput) => {
     setFormError(null);
     setSaving(true);
-    const res = editing
-      ? await updateTransaction(editing.id, payload)
-      : await createTransaction(payload);
-    setSaving(false);
-
-    if (!res.ok) {
-      setFormError(res.error.message);
-      return;
+    try {
+      if (editing) await updateTransaction(editing.id, payload);
+      else await createTransaction(payload);
+      setModalOpen(false);
+      setEditing(null);
+      load();
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Nao foi possivel salvar";
+      setFormError(message);
+    } finally {
+      setSaving(false);
     }
-
-    setModalOpen(false);
-    setEditing(null);
-    load();
   };
 
   const tableItems = useMemo(() => items, [items]);

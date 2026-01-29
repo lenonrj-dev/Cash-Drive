@@ -1,19 +1,27 @@
 /* frontend/services/billsService.ts */
 import { api } from "./http";
-import type { ApiResponse, Bill, BillInput } from "../types/api";
+import type { Bill, BillInput } from "../types/api";
 
-export function listBills(): Promise<ApiResponse<Bill[]>> {
-  return api<Bill[]>("/bills", { method: "GET" });
+export async function listBills(): Promise<{ items: Bill[] }> {
+  const res = await api<Bill[]>("/bills", { method: "GET" });
+  if (!res.ok) return { items: [] };
+  return { items: Array.isArray(res.data) ? res.data : [] };
 }
 
-export function createBill(payload: BillInput) {
-  return api<Bill>("/bills", { method: "POST", body: payload });
+export async function createBill(payload: BillInput): Promise<Bill> {
+  const res = await api<Bill>("/bills", { method: "POST", body: JSON.stringify(payload) });
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }
 
-export function updateBill(id: string, payload: Partial<BillInput>) {
-  return api<Bill>(`/bills/${id}`, { method: "PATCH", body: payload });
+export async function updateBill(id: string, payload: Partial<BillInput>): Promise<Bill> {
+  const res = await api<Bill>(`/bills/${id}`, { method: "PATCH", body: JSON.stringify(payload) });
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }
 
-export function deleteBill(id: string) {
-  return api<{ id: string }>(`/bills/${id}`, { method: "DELETE" });
+export async function deleteBill(id: string): Promise<{ id: string }> {
+  const res = await api<{ id: string }>(`/bills/${id}`, { method: "DELETE" });
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }

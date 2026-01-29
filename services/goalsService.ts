@@ -1,19 +1,27 @@
 /* frontend/services/goalsService.ts */
 import { api } from "./http";
-import type { ApiResponse, Goal, GoalInput } from "../types/api";
+import type { Goal, GoalInput } from "../types/api";
 
-export function listGoals(): Promise<ApiResponse<Goal[]>> {
-  return api<Goal[]>("/goals", { method: "GET" });
+export async function listGoals(): Promise<{ items: Goal[] }> {
+  const res = await api<Goal[]>("/goals", { method: "GET" });
+  if (!res.ok) return { items: [] };
+  return { items: Array.isArray(res.data) ? res.data : [] };
 }
 
-export function createGoal(payload: GoalInput) {
-  return api<Goal>("/goals", { method: "POST", body: payload });
+export async function createGoal(payload: GoalInput): Promise<Goal> {
+  const res = await api<Goal>("/goals", { method: "POST", body: JSON.stringify(payload) });
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }
 
-export function updateGoal(id: string, payload: Partial<GoalInput>) {
-  return api<Goal>(`/goals/${id}`, { method: "PATCH", body: payload });
+export async function updateGoal(id: string, payload: Partial<GoalInput>): Promise<Goal> {
+  const res = await api<Goal>(`/goals/${id}`, { method: "PATCH", body: JSON.stringify(payload) });
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }
 
-export function deleteGoal(id: string) {
-  return api<{ id: string }>(`/goals/${id}`, { method: "DELETE" });
+export async function deleteGoal(id: string): Promise<{ id: string }> {
+  const res = await api<{ id: string }>(`/goals/${id}`, { method: "DELETE" });
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }

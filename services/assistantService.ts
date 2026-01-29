@@ -1,11 +1,21 @@
 /* frontend/services/assistantService.ts */
 import { api } from "./http";
-import type { ApiResponse, AssistantParseResponse, TransactionInput, Transaction } from "../types/api";
+import type { AssistantParseResponse, TransactionInput, Transaction } from "../types/api";
 
-export function parseAssistant(text: string): Promise<ApiResponse<AssistantParseResponse>> {
-  return api<AssistantParseResponse>("/assistant/parse", { method: "POST", body: { text } });
+export async function parseAssistant(text: string): Promise<AssistantParseResponse> {
+  const res = await api<AssistantParseResponse>("/assistant/parse", {
+    method: "POST",
+    body: JSON.stringify({ text }),
+  });
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }
 
-export function confirmAssistant(transaction: TransactionInput): Promise<ApiResponse<Transaction>> {
-  return api<Transaction>("/assistant/confirm", { method: "POST", body: { transaction } });
+export async function confirmAssistant(transaction: TransactionInput): Promise<Transaction> {
+  const res = await api<Transaction>("/assistant/confirm", {
+    method: "POST",
+    body: JSON.stringify({ transaction }),
+  });
+  if (!res.ok) throw new Error(res.error.message);
+  return res.data;
 }

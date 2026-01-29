@@ -1,51 +1,73 @@
 /* frontend/services/http.ts */
-import { API_URL } from "../lib/constants";
-import { getToken } from "../lib/storage";
-import type { ApiResponse } from "../types/api";
-
-type HttpMethod = "GET" | "POST" | "PATCH" | "DELETE";
-type RequestOptions = {
-  method?: HttpMethod;
-  body?: unknown;
-  headers?: Record<string, string>;
-  auth?: boolean;
-  signal?: AbortSignal;
+export type ApiError = {
+  message: string;
+  details?: unknown;
 };
 
-function buildHeaders(opts?: RequestOptions): HeadersInit {
-  const headers: Record<string, string> = {
-    "Content-Type": "application/json",
-    ...(opts?.headers || {})
-  };
-  if (opts?.auth !== false) {
-    const token = getToken();
-    if (token) headers.Authorization = `Bearer ${token}`;
-  }
-  return headers;
+export type ApiResponse<T> =
+  | { ok: true; data: T }
+  | { ok: false; error: ApiError };
+
+function getBaseUrl() {
+  const base = process.env.NEXT_PUBLIC_API_URL;
+  return base?.replace(/\/$/, "") || "";
 }
 
-export async function api<T>(path: string, opts?: RequestOptions): Promise<ApiResponse<T>> {
-  const url = `${API_URL}${path.startsWith("/") ? path : `/${path}`}`;
+function safeJson(text: string) {
   try {
-    const res = await fetch(url, {
-      method: opts?.method || "GET",
-      headers: buildHeaders(opts),
-      body: opts?.body === undefined ? undefined : JSON.stringify(opts.body),
-      signal: opts?.signal,
-      cache: "no-store"
-    });
-
-    const isJson = res.headers.get("content-type")?.includes("application/json");
-    const payload = isJson ? await res.json() : null;
-
-    if (!res.ok) {
-      const message = payload?.error?.message || payload?.message || `Erro HTTP ${res.status}`;
-      return { ok: false, error: { message, details: payload?.error?.details } };
-    }
-
-    return (payload ?? { ok: true, data: null }) as ApiResponse<T>;
-  } catch (err) {
-    const message = err instanceof Error ? err.message : "Falha de rede/servidor indisponivel";
-    return { ok: false, error: { message } };
+    return JSON.parse(text);
+  } catch {
+    return null;
   }
+}
+
+export async function api<T>(path: string, init?: RequestInit): Promise<ApiResponse<T>> {
+  const base = getBaseUrl();
+  if (!base) {
+    return { ok: false, error: { message: "NEXT_PUBLIC_API_URL nao configurado" } };
+  }
+
+  const url = `${base}${path.startsWith("/") ? path : `/${path}`}`;
+
+  const headers = new Headers(init?.headers);
+  const body = init?.body as unknown;
+  const isFormData = typeof FormData !== "undefined" && body instanceof FormData;
+
+  if (!headers.has("Content-Type") && !isFormData) {
+    headers.set("Content-Type", "application/json");
+  }
+
+  if (typeof window !== "undefined") {
+    const token = window.localStorage.getItem("token");
+    if (token) headers.set("Authorization", `Bearer ${token}`);
+  }
+
+  const res = await fetch(url, {
+    ...init,
+    headers,
+    credentials: "include"
+  });
+
+  const text = await res.text();
+  const json = text ? safeJson(text) : null;
+
+  if (!res.ok) {
+    return {
+      ok: false,
+      error: {
+        message: json?.error?.message || json?.message || "Falha na requisicao",
+        details: json?.error?.details
+      }
+    };
+  }
+
+  if (json?.ok === true) {
+    return { ok: true, data: (json.data ?? {}) as T };
+  }
+
+  if (!json) {
+    return { ok: true, data: {} as T };
+  }
+
+  return { ok: true, data: json as T };
 }
