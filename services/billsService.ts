@@ -3,9 +3,12 @@ import { api } from "./http";
 import type { Bill, BillInput } from "../types/api";
 
 export async function listBills(): Promise<{ items: Bill[] }> {
-  const res = await api<Bill[]>("/bills", { method: "GET" });
+  const res = await api<any>("/bills", { method: "GET" });
   if (!res.ok) return { items: [] };
-  return { items: Array.isArray(res.data) ? res.data : [] };
+  const data = res.data;
+  if (Array.isArray(data)) return { items: data };
+  if (Array.isArray(data?.items)) return { items: data.items };
+  return { items: [] };
 }
 
 export async function createBill(payload: BillInput): Promise<Bill> {

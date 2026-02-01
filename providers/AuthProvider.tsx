@@ -63,7 +63,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
       setUser(data.user);
       return { ok: true };
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Nao foi possivel entrar";
+      const message = err instanceof Error ? err.message : "Não foi possível entrar";
       return { ok: false, error: message };
     }
   }, []);
@@ -82,7 +82,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
       setUser(data.user);
       return { ok: true };
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Nao foi possivel criar conta";
+      const message = err instanceof Error ? err.message : "Não foi possível criar conta";
       return { ok: false, error: message };
     }
   }, []);

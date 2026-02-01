@@ -3,9 +3,12 @@ import { api } from "./http";
 import type { Goal, GoalInput } from "../types/api";
 
 export async function listGoals(): Promise<{ items: Goal[] }> {
-  const res = await api<Goal[]>("/goals", { method: "GET" });
+  const res = await api<any>("/goals", { method: "GET" });
   if (!res.ok) return { items: [] };
-  return { items: Array.isArray(res.data) ? res.data : [] };
+  const data = res.data;
+  if (Array.isArray(data)) return { items: data };
+  if (Array.isArray(data?.items)) return { items: data.items };
+  return { items: [] };
 }
 
 export async function createGoal(payload: GoalInput): Promise<Goal> {

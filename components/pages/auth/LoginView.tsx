@@ -32,7 +32,7 @@ export default function LoginView() {
     setIsSubmitting(false);
 
     if (!res.ok) {
-      setFormError(res.error || "Nao foi possivel entrar.");
+      setFormError(res.error || "Não foi possível entrar.");
       return;
     }
 
@@ -40,7 +40,7 @@ export default function LoginView() {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 mt-25">
       <div className="lg:col-span-7">
         <Card className="p-6">
           <header className="mb-5">
@@ -67,7 +67,7 @@ export default function LoginView() {
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              hint="Minimo de 6 caracteres."
+              hint="Mínimo de 6 caracteres."
             />
 
             {formError ? (
@@ -90,7 +90,7 @@ export default function LoginView() {
             </div>
 
             <div className="pt-2 text-sm text-zinc-600">
-              Nao tem conta?{" "}
+              Não tem conta?{" "}
               <Link className="font-semibold text-zinc-900 hover:underline" href={routes.auth.cadastro}>
                 Criar conta
               </Link>

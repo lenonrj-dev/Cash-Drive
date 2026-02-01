@@ -4,7 +4,7 @@ import { routes } from "../../lib/routes";
 
 const items = [
   { href: routes.app.dashboard, label: "Dashboard", icon: DashboardIcon },
-  { href: routes.app.lancamentos, label: "Lancamentos", icon: SwapIcon },
+  { href: routes.app.lancamentos, label: "Lançamentos", icon: SwapIcon },
   { href: routes.app.metas, label: "Metas", icon: TargetIcon },
   { href: routes.app.planos, label: "Planos", icon: CardIcon }
 ];

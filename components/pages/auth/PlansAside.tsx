@@ -10,16 +10,25 @@ import type { BillingPlan } from "../../../types/api";
 import Link from "next/link";
 import { routes } from "../../../lib/routes";
 import Skeleton from "../../ui/Skeleton";
+import BillingCycleToggle from "../../common/BillingCycleToggle";
+import { formatCurrencyBRL } from "../../../lib/format";
+import {
+  PRICING,
+  type BillingCycle,
+  getAnnualSavingsCents
+} from "../../../lib/pricing";
+import { mapPlansToCycle } from "../billing/planPricing";
 
 export default function PlansAside() {
   const [plans, setPlans] = useState<BillingPlan[]>([]);
   const [loading, setLoading] = useState(true);
+  const [cycle, setCycle] = useState<BillingCycle>("monthly");
 
   useEffect(() => {
     let alive = true;
     (async () => {
       setLoading(true);
-      const res = await getPlans();
+      const res = await getPlans(cycle);
       if (!alive) return;
       setPlans(res.plans);
       setLoading(false);
@@ -27,22 +36,37 @@ export default function PlansAside() {
     return () => {
       alive = false;
     };
-  }, []);
+  }, [cycle]);
 
-  const primary = useMemo(() => plans.find((p) => p.highlight) || plans[0], [plans]);
+  const displayPlans = useMemo(() => mapPlansToCycle(plans, cycle), [plans, cycle]);
+  const primary = useMemo(
+    () => displayPlans.find((p) => p.highlight) || displayPlans[0],
+    [displayPlans]
+  );
+  const annualBadge = useMemo(() => {
+    const maxSavings = Math.max(
+      getAnnualSavingsCents(PRICING.basic.monthlyCents, PRICING.basic.annualCents),
+      getAnnualSavingsCents(PRICING.pro.monthlyCents, PRICING.pro.annualCents)
+    );
+    return `Economize até ${formatCurrencyBRL(maxSavings)}/ano`;
+  }, []);
 
   return (
     <Card className="p-6">
       <header className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">Planos</p>
-          <h2 className="mt-2 text-lg font-bold text-zinc-900">Teste gratis por 15 dias</h2>
+          <h2 className="mt-2 text-lg font-bold text-zinc-900">Teste grátis por 15 dias</h2>
           <p className="mt-1 text-sm text-zinc-600">
-            Voce nao sera cobrado hoje. O cartao e necessario para iniciar o trial.
+            Você não será cobrado hoje. O cartão é necessário para iniciar o trial.
           </p>
         </div>
         <Badge>15 dias</Badge>
       </header>
+
+      <div className="mt-4">
+        <BillingCycleToggle cycle={cycle} onChange={setCycle} annualBadge={annualBadge} />
+      </div>
 
       <div className="mt-5 space-y-3">
         {loading ? (
@@ -50,8 +74,8 @@ export default function PlansAside() {
             <Skeleton className="h-16" />
             <Skeleton className="h-16" />
           </div>
-        ) : plans.length ? (
-          plans.map((p) => (
+        ) : displayPlans.length ? (
+          displayPlans.map((p) => (
             <div
               key={p.id}
               className={[
@@ -64,7 +88,7 @@ export default function PlansAside() {
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="text-sm font-semibold text-zinc-900">{p.name}</p>
-                  <p className="mt-1 text-sm text-zinc-600">{p.priceLabel}</p>
+                  <p className="mt-1 text-sm text-zinc-600">{p.displayPriceLabel}</p>
                 </div>
                 {p.highlight ? (
                   <Badge className="border-transparent bg-teal-600 text-white">Recomendado</Badge>
@@ -83,7 +107,7 @@ export default function PlansAside() {
           ))
         ) : (
           <div className="rounded-2xl border border-zinc-200/70 bg-white/70 p-4 text-sm text-zinc-600">
-            Planos indisponiveis no momento. Voce ainda pode entrar/criar conta e ver o painel em modo leitura.
+            Planos indisponíveis no momento. Você ainda pode entrar/criar conta e ver o painel em modo leitura.
           </div>
         )}
       </div>
@@ -97,7 +121,7 @@ export default function PlansAside() {
 
         {primary ? (
           <p className="text-xs text-zinc-500">
-            Sugestao: <span className="font-semibold">{primary.name}</span> ({primary.priceLabel})
+            Sugestão: <span className="font-semibold">{primary.name}</span> ({primary.displayPriceLabel})
           </p>
         ) : null}
       </div>

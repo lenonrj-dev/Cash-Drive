@@ -24,7 +24,7 @@ function safeJson(text: string) {
 export async function api<T>(path: string, init?: RequestInit): Promise<ApiResponse<T>> {
   const base = getBaseUrl();
   if (!base) {
-    return { ok: false, error: { message: "NEXT_PUBLIC_API_URL nao configurado" } };
+    return { ok: false, error: { message: "NEXT_PUBLIC_API_URL não configurado" } };
   }
 
   const url = `${base}${path.startsWith("/") ? path : `/${path}`}`;
@@ -55,7 +55,7 @@ export async function api<T>(path: string, init?: RequestInit): Promise<ApiRespo
     return {
       ok: false,
       error: {
-        message: json?.error?.message || json?.message || "Falha na requisicao",
+        message: json?.error?.message || json?.message || "Falha na requisição",
         details: json?.error?.details
       }
     };

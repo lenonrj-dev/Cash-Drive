@@ -15,7 +15,7 @@ export default function EnvWarning({ className = "" }: { className?: string }) {
     <div className={className}>
       <Alert
         variant="info"
-        message="Aviso: NEXT_PUBLIC_API_URL nao configurado. Conecte a API para liberar o app."
+        message="Aviso: NEXT_PUBLIC_API_URL não configurado. Conecte a API para liberar o app."
       />
     </div>
   );

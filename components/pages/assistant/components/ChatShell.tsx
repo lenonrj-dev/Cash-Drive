@@ -17,7 +17,7 @@ export default function ChatShell({ canWrite }: { canWrite: boolean }) {
     {
       id: "m1",
       role: "assistant",
-      text: "Oi! Me diga algo como: 'Entrada 120 Uber hoje' ou 'Saida 50 gasolina ontem'."
+      text: "Oi! Me diga algo como: 'Entrada 120 Uber hoje' ou 'Saída 50 gasolina ontem'."
     }
   ]);
   const [text, setText] = useState("");
@@ -48,14 +48,14 @@ export default function ChatShell({ canWrite }: { canWrite: boolean }) {
         }
       ]);
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Nao foi possivel interpretar";
+      const message = err instanceof Error ? err.message : "Não foi possível interpretar";
       setError(message);
       setMessages((prev) => [
         ...prev,
         {
           id: crypto.randomUUID(),
           role: "assistant",
-          text: "Nao consegui interpretar. Tente novamente com valor e tipo."
+          text: "Não consegui interpretar. Tente novamente com valor e tipo."
         }
       ]);
     } finally {
@@ -74,12 +74,12 @@ export default function ChatShell({ canWrite }: { canWrite: boolean }) {
         {
           id: crypto.randomUUID(),
           role: "assistant",
-          text: "Lancamento confirmado e salvo!"
+          text: "Lançamento confirmado e salvo!"
         }
       ]);
       setPending(null);
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Nao foi possivel confirmar";
+      const message = err instanceof Error ? err.message : "Não foi possível confirmar";
       setError(message);
     } finally {
       setLoading(false);
@@ -104,7 +104,7 @@ export default function ChatShell({ canWrite }: { canWrite: boolean }) {
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">Assistente</p>
         <h2 className="mt-2 text-lg font-bold text-zinc-900">Assistente Cash</h2>
         <p className="mt-1 text-sm text-zinc-600">
-          Registre lancamentos por texto. Sempre confirma antes de salvar.
+          Registre lançamentos por texto. Sempre confirma antes de salvar.
         </p>
       </Card>
 
@@ -172,7 +172,7 @@ export default function ChatShell({ canWrite }: { canWrite: boolean }) {
 }
 
 function formatProposal(tx: TransactionInput) {
-  const type = tx.type === "INCOME" ? "Entrada" : "Saida";
+  const type = tx.type === "INCOME" ? "Entrada" : "Saída";
   const date = formatDateShort(tx.date);
   const category = tx.category ? `, ${tx.category}` : "";
   return `${type} ${formatCurrencyBRL(tx.amountCents)}${category} em ${date}`;

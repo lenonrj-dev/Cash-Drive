@@ -18,6 +18,7 @@ type BillingContextValue = {
   trialEnd?: string | null;
   currentPeriodEnd?: string | null;
   cancelAtPeriodEnd?: boolean;
+  trialDaysRemaining?: number | null;
   refresh: () => Promise<void>;
 };
 
@@ -32,6 +33,7 @@ export default function BillingProvider({ children }: { children: React.ReactNod
   const [trialEnd, setTrialEnd] = useState<string | null>(null);
   const [currentPeriodEnd, setCurrentPeriodEnd] = useState<string | null>(null);
   const [cancelAtPeriodEnd, setCancelAtPeriodEnd] = useState(false);
+  const [trialDaysRemaining, setTrialDaysRemaining] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const refresh = useCallback(async () => {
@@ -46,6 +48,7 @@ export default function BillingProvider({ children }: { children: React.ReactNod
     setTrialEnd(statusResult.trialEnd ?? null);
     setCurrentPeriodEnd(statusResult.currentPeriodEnd ?? null);
     setCancelAtPeriodEnd(Boolean(statusResult.cancelAtPeriodEnd));
+    setTrialDaysRemaining(typeof statusResult.trialDaysRemaining === "number" ? statusResult.trialDaysRemaining : null);
     setIsLoading(false);
   }, [isAuthed]);
 
@@ -57,10 +60,10 @@ export default function BillingProvider({ children }: { children: React.ReactNod
 
   const reason =
     !isAuthed
-      ? "Faca login para continuar."
+      ? "Faça login para continuar."
       : canWrite
       ? undefined
-      : "Ative um plano para desbloquear acoes (lancamentos, metas, contas e assistente).";
+      : "Ative um plano para desbloquear ações (lançamentos, metas, contas e assistente).";
 
   const value = useMemo(
     () => ({
@@ -72,6 +75,7 @@ export default function BillingProvider({ children }: { children: React.ReactNod
       trialEnd,
       currentPeriodEnd,
       cancelAtPeriodEnd,
+      trialDaysRemaining,
       refresh
     }),
     [
@@ -83,6 +87,7 @@ export default function BillingProvider({ children }: { children: React.ReactNod
       trialEnd,
       currentPeriodEnd,
       cancelAtPeriodEnd,
+      trialDaysRemaining,
       refresh
     ]
   );

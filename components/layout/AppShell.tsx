@@ -30,7 +30,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-teal-600 focus:px-4 focus:py-2 focus:text-white"
       >
-        Pular para o conteudo
+        Pular para o conteúdo
       </a>
 
       <Sidebar currentPath={pathname || ""} />
@@ -51,12 +51,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
 function resolveTitle(path: string) {
   if (path.startsWith(routes.app.dashboard)) return "Dashboard";
-  if (path.startsWith(routes.app.lancamentos)) return "Lancamentos";
+  if (path.startsWith(routes.app.lancamentos)) return "Lançamentos";
   if (path.startsWith(routes.app.metas)) return "Metas";
   if (path.startsWith(routes.app.contas)) return "Contas";
-  if (path.startsWith(routes.app.notificacoes)) return "Notificacoes";
+  if (path.startsWith(routes.app.notificacoes)) return "Notificações";
   if (path.startsWith(routes.app.assistente)) return "Assistente Cash";
-  if (path.startsWith(routes.app.configuracoes)) return "Configuracoes";
+  if (path.startsWith(routes.app.configuracoes)) return "Configurações";
   if (path.startsWith(routes.app.planos)) return "Planos";
   return "Cash Drive";
 }

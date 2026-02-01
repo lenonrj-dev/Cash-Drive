@@ -11,10 +11,10 @@ export default function PaywallCard({ title }: { title?: string }) {
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">Modo leitura</p>
           <h1 className="mt-2 text-2xl font-bold text-zinc-900">
-            {title || "Recurso indisponivel"}
+            {title || "Recurso indisponível"}
           </h1>
           <p className="mt-2 text-sm text-zinc-600">
-            Voce esta em modo leitura. Para registrar lancamentos, metas, contas e usar o assistente,
+            Você está em modo leitura. Para registrar lançamentos, metas, contas e usar o assistente,
             ative um plano com trial de 15 dias.
           </p>
         </div>
@@ -24,7 +24,7 @@ export default function PaywallCard({ title }: { title?: string }) {
             <Button>Ativar plano</Button>
           </Link>
           <Link href={routes.app.dashboard}>
-            <Button variant="secondary">Voltar ao dashboard</Button>
+            <Button variant="secondary">Voltar ao painel</Button>
           </Link>
         </div>
       </div>

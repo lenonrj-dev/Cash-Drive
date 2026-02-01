@@ -22,13 +22,13 @@ export default function Page() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-zinc-900">2) Trial e cobranca</p>
-            <p>Ao iniciar o trial de 15 dias, o cartao e obrigatorio. A cobranca inicia apos o periodo do trial.</p>
+            <p className="text-sm font-semibold text-zinc-900">2) Trial e cobrança</p>
+            <p>Ao iniciar o trial de 15 dias, o cartão e obrigatorio. A cobrança inicia após o período do trial.</p>
           </div>
 
           <div>
             <p className="text-sm font-semibold text-zinc-900">3) Acesso</p>
-            <p>Sem plano ativo/trial, o app pode permanecer em modo leitura com acoes bloqueadas.</p>
+            <p>Sem plano ativo/trial, o app pode permanecer em modo leitura com ações bloqueadas.</p>
           </div>
 
           <div>

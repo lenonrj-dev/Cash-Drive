@@ -14,6 +14,7 @@ export type BillingStatusResponse = {
   trialEnd?: string | null;
   currentPeriodEnd?: string | null;
   cancelAtPeriodEnd?: boolean;
+  trialDaysRemaining?: number | null;
 };
 
 export type BillingPlan = {
@@ -23,6 +24,13 @@ export type BillingPlan = {
   highlight?: boolean;
   benefits: string[];
   trialDays: number;
+  interval?: "monthly" | "annual";
+  priceMonthlyCents?: number;
+  priceAnnualCents?: number;
+  priceMonthlyId?: string;
+  priceAnnualId?: string;
+  priceMonthlyLabel?: string;
+  priceAnnualLabel?: string;
 };
 
 export type BillingPlansResponse = { plans: BillingPlan[] };

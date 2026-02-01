@@ -6,6 +6,7 @@ export const DEFAULT_BILLING_STATUS = {
   trialEnd: null,
   currentPeriodEnd: null,
   cancelAtPeriodEnd: false,
+  trialDaysRemaining: null
 };
 
 export function isBillingActive(status?: BillingStatus | null) {

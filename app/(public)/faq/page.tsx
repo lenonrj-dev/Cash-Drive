@@ -6,31 +6,31 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "FAQ",
-  description: "Duvidas frequentes sobre planos, modo leitura e seguranca."
+  description: "Dúvidas frequentes sobre planos, modo leitura e segurança."
 };
 
 export default function Page() {
   return (
     <PublicShell>
-      <PageHeader title="FAQ" subtitle="Duvidas frequentes sobre planos, modo leitura, lancamentos e seguranca." />
+      <PageHeader title="FAQ" subtitle="Dúvidas frequentes sobre planos, modo leitura, lançamentos e segurança." />
 
       <div className="mt-6 grid grid-cols-1 gap-4">
         {[
           {
             title: "Posso usar sem pagar?",
-            text: "Sim. Apos criar conta, voce pode visualizar o dashboard em modo leitura. Para registrar lancamentos, metas, contas e usar o assistente, e necessario ativar um plano."
+            text: "Sim. Após criar conta, você pode visualizar o painel em modo leitura. Para registrar lançamentos, metas, contas e usar o assistente, é necessário ativar um plano."
           },
           {
-            title: "Por que precisa de cartao no trial?",
-            text: "Para iniciar o trial de 15 dias e automatizar a cobranca apos o periodo, quando aplicavel."
+            title: "Por que precisa de cartão no trial?",
+            text: "Para iniciar o trial de 15 dias e automatizar a cobrança após o período, quando aplicável."
           },
           {
             title: "Me cobram no mesmo dia?",
-            text: "Nao. A cobranca inicia somente apos o termino do trial (15 dias)."
+            text: "Não. A cobrança inicia somente após o término do trial (15 dias)."
           },
           {
-            title: "Meus dados estao seguros?",
-            text: "O projeto segue boas praticas: autenticacao segura, HTTPS, autorizacao por usuario e logs minimos."
+            title: "Meus dados estão seguros?",
+            text: "O projeto segue boas práticas: autenticação segura, HTTPS, autorização por usuário e logs mínimos."
           }
         ].map((item) => (
           <Card key={item.title}>

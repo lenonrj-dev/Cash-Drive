@@ -16,6 +16,7 @@ export default function BillingStatusCard() {
 
   const status = billing?.status || "none";
   const canWrite = Boolean(billing?.canWrite);
+  const trialDaysRemaining = billing?.trialDaysRemaining;
 
   return (
     <Card>
@@ -24,7 +25,7 @@ export default function BillingStatusCard() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">Assinatura</p>
           <h3 className="mt-2 text-lg font-bold text-zinc-900">Status da assinatura</h3>
           <p className="mt-1 text-sm text-zinc-600">
-            {canWrite ? "Acoes liberadas no app." : "Modo leitura - ative um plano para desbloquear."}
+            {canWrite ? "Ações liberadas no app." : "Modo leitura - ative um plano para desbloquear."}
           </p>
         </div>
         <Badge>{label(status)}</Badge>
@@ -32,13 +33,13 @@ export default function BillingStatusCard() {
 
       <div className="mt-4 grid grid-cols-1 gap-2 text-xs text-zinc-600 sm:grid-cols-3">
         <div className="rounded-xl border border-zinc-200/70 bg-white/70 px-3 py-2">
-          <span className="font-semibold">Trial:</span> {formatDateShort(billing?.trialEnd)}
+          <span className="font-semibold">Trial:</span> {formatDateShort(billing?.trialEnd)}{typeof trialDaysRemaining === "number" ? ` (${trialDaysRemaining}d)` : ""}
         </div>
         <div className="rounded-xl border border-zinc-200/70 bg-white/70 px-3 py-2">
-          <span className="font-semibold">Periodo:</span> {formatDateShort(billing?.currentPeriodEnd)}
+          <span className="font-semibold">Período:</span> {formatDateShort(billing?.currentPeriodEnd)}
         </div>
         <div className="rounded-xl border border-zinc-200/70 bg-white/70 px-3 py-2">
-          <span className="font-semibold">Cancela no fim:</span> {billing?.cancelAtPeriodEnd ? "Sim" : "Nao"}
+          <span className="font-semibold">Cancela no fim:</span> {billing?.cancelAtPeriodEnd ? "Sim" : "Não"}
         </div>
       </div>
 

@@ -1,84 +1,58 @@
-﻿/* frontend/app/page.tsx */
-import Link from "next/link";
-import PublicShell from "../components/layout/PublicShell";
-import Card from "../components/ui/Card";
-import Button from "../components/ui/Button";
-import Badge from "../components/ui/Badge";
-import { routes } from "../lib/routes";
+import type { Metadata } from 'next'
+import Navbar from '@/components/landing/Navbar'
+import Hero from '@/components/landing/Hero'
+import SocialProof from '@/components/landing/SocialProof'
+import Problem from '@/components/landing/Problem'
+import Features from '@/components/landing/Features'
+import HowItWorks from '@/components/landing/HowItWorks'
+import Pricing from '@/components/landing/Pricing'
+import Integrations from '@/components/landing/Integrations'
+import FAQ from '@/components/landing/FAQ'
+import Newsletter from '@/components/landing/Newsletter'
+import Footer from '@/components/landing/Footer'
 
-export default function Page() {
+export const metadata: Metadata = {
+  title: 'Cash Drive | Controle financeiro para motoboys e entregadores',
+  description:
+    'Controle entradas e saídas, acompanhe metas diárias, cuide da moto e mantenha as contas em dia com o Cash Drive.',
+  openGraph: {
+    title: 'Cash Drive | Controle financeiro para motoboys e entregadores',
+    description:
+      'Controle entradas e saídas, acompanhe metas diárias, cuide da moto e mantenha as contas em dia com o Cash Drive.',
+    type: 'website',
+    url: 'https://cash-drive.vercel.app'
+  }
+}
+
+export default function Home() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Cash Drive',
+    applicationCategory: 'FinanceApplication',
+    description:
+      'Dashboard financeiro para motoboys e entregadores: controle de entradas, saídas, metas e manutenção da moto.',
+    operatingSystem: 'Web',
+    offers: [
+      { '@type': 'Offer', price: '9.90', priceCurrency: 'BRL', name: 'Plano Básico' },
+      { '@type': 'Offer', price: '14.90', priceCurrency: 'BRL', name: 'Plano Pro' }
+    ]
+  }
+
   return (
-    <PublicShell>
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <div className="lg:col-span-7">
-          <Card className="p-8">
-            <div className="flex flex-wrap items-center gap-2">
-              <Badge>Mobile-first</Badge>
-              <Badge>Modo claro/escuro</Badge>
-              <Badge>15 dias gratis</Badge>
-            </div>
-
-            <h1 className="mt-4 text-4xl font-bold tracking-tight text-zinc-900">
-              Controle seu dinheiro na rua, com um painel premium.
-            </h1>
-            <p className="mt-3 text-base text-zinc-600">
-              Cash Drive e o painel financeiro para motoristas e entregadores: entradas, saidas,
-              metas, contas e notificacoes — com modo leitura gratis e acoes liberadas com plano.
-            </p>
-
-            <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-              <Link href={routes.auth.cadastro}>
-                <Button size="lg">Criar conta</Button>
-              </Link>
-              <Link href={routes.auth.login}>
-                <Button size="lg" variant="secondary">
-                  Entrar
-                </Button>
-              </Link>
-            </div>
-
-            <p className="mt-4 text-sm text-zinc-500">
-              Voce pode visualizar o dashboard apos criar conta. Para registrar acoes, ative um plano.
-            </p>
-          </Card>
-        </div>
-
-        <div className="lg:col-span-5">
-          <Card className="p-6">
-            <h2 className="text-lg font-bold text-zinc-900">O que voce controla</h2>
-            <ul className="mt-4 space-y-3 text-sm text-zinc-600">
-              <li className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-teal-500" />
-                Saldo, entradas e saidas por periodo
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-teal-500" />
-                Metas com &quot;faltam R$ X&quot;
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-teal-500" />
-                Contas com vencimento e status
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-teal-500" />
-                Notificacoes e parabenizacoes
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-teal-500" />
-                Assistente Cash (no app + WhatsApp)
-              </li>
-            </ul>
-
-            <div className="mt-6">
-              <Link href={routes.public.pricing}>
-                <Button variant="secondary" className="w-full">
-                  Ver planos
-                </Button>
-              </Link>
-            </div>
-          </Card>
-        </div>
-      </div>
-    </PublicShell>
-  );
+    <main className="min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <Navbar />
+      <Hero />
+      <SocialProof />
+      <Problem />
+      <Features />
+      <HowItWorks />
+      <Pricing />
+      <Integrations />
+      <FAQ />
+      <Newsletter />
+      <Footer />
+    </main>
+  )
 }

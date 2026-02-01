@@ -12,7 +12,7 @@ export default function AssistantView() {
 
   return (
     <div className="space-y-4">
-      {!canWrite ? <ReadOnlyBanner message={billing?.reason || "Ative um plano para liberar acoes."} /> : null}
+      {!canWrite ? <ReadOnlyBanner message={billing?.reason || "Ative um plano para liberar ações."} /> : null}
       <ChatShell canWrite={canWrite} />
     </div>
   );

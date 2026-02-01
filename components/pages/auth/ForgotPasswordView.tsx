@@ -23,16 +23,16 @@ export default function ForgotPasswordView() {
     <div className="mx-auto w-full max-w-xl">
       <Card className="p-6">
         <header className="mb-5">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">Recuperacao</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">Recuperação</p>
           <h1 className="mt-2 text-2xl font-bold text-zinc-900">Recuperar senha</h1>
           <p className="mt-1 text-sm text-zinc-600">
-            Informe seu email para receber instrucoes de redefinicao.
+            Informe seu e-mail para receber instruções de redefinição.
           </p>
         </header>
 
         {sent ? (
           <div className="rounded-2xl border border-zinc-200/70 bg-white/70 p-4 text-sm text-zinc-600">
-            Se o email existir, enviaremos as instrucoes. Voce ja pode voltar ao login.
+            Se o e-mail existir, enviaremos as instruções. Você já pode voltar ao login.
           </div>
         ) : (
           <form onSubmit={onSubmit} className="space-y-4">
@@ -45,7 +45,7 @@ export default function ForgotPasswordView() {
               autoComplete="email"
             />
             <Button type="submit" disabled={disabled} className="w-full">
-              Enviar instrucoes
+              Enviar instruções
             </Button>
           </form>
         )}

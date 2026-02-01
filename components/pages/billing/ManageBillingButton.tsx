@@ -17,7 +17,7 @@ export default function ManageBillingButton() {
       const url = await openBillingPortal();
       window.location.href = url;
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Nao foi possivel abrir o portal";
+      const message = err instanceof Error ? err.message : "Não foi possível abrir o portal";
       setError(message);
     } finally {
       setBusy(false);

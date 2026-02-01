@@ -9,7 +9,7 @@ const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["400", "500", "
 export const metadata: Metadata = {
   title: { default: "Cash Drive", template: "%s | Cash Drive" },
   description:
-    "Cash Drive - painel financeiro para motoristas e entregadores. Controle de entradas, saidas, metas e contas.",
+    "Cash Drive - painel financeiro para motoristas e entregadores. Controle de entradas, saídas, metas e contas.",
   applicationName: "Cash Drive",
   icons: { icon: "/favicon.ico" }
 };

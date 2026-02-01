@@ -6,16 +6,16 @@ import { routes } from "../../../lib/routes";
 
 export default function QuickActions({ canWrite }: { canWrite: boolean }) {
   return (
-    <Card className="h-full">
-      <h2 className="text-sm font-semibold text-zinc-900">Acoes rapidas</h2>
+    <Card className="h-full" aria-label="Ações rápidas">
+      <h2 className="text-sm font-semibold text-zinc-900">Ações rápidas</h2>
       <p className="mt-1 text-sm text-zinc-600">
-        {canWrite ? "Registre movimentacoes em segundos." : "Acoes desabilitadas no modo leitura."}
+        {canWrite ? "Registre movimentações em segundos." : "Ações desabilitadas no modo leitura."}
       </p>
 
       <div className="mt-5 space-y-2">
         <Link href={routes.app.lancamentos} className="block">
           <Button className="w-full" disabled={!canWrite}>
-            Novo lancamento
+            Novo lançamento
           </Button>
         </Link>
         <Link href={routes.app.metas} className="block">
@@ -28,6 +28,19 @@ export default function QuickActions({ canWrite }: { canWrite: boolean }) {
             Adicionar conta
           </Button>
         </Link>
+
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+          <Link href={(routes as any)?.app?.moto ?? "/moto"} className="block">
+            <Button className="w-full" variant="ghost">
+              Moto
+            </Button>
+          </Link>
+          <Link href={(routes as any)?.app?.suporte ?? "/suporte"} className="block">
+            <Button className="w-full" variant="ghost">
+              Suporte
+            </Button>
+          </Link>
+        </div>
 
         {!canWrite ? (
           <div className="rounded-2xl border border-zinc-200/70 bg-white/70 p-3 text-xs text-zinc-600">

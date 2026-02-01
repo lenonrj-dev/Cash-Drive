@@ -22,15 +22,25 @@ function buildQuery(filters?: ListFilters) {
 }
 
 export async function listTransactions(filters?: ListFilters): Promise<{ items: Transaction[] }> {
-  const res = await api<Transaction[]>(`/transactions${buildQuery(filters)}`, { method: "GET" });
+  const res = await api<any>(`/transactions${buildQuery(filters)}`, { method: "GET" });
   if (!res.ok) return { items: [] };
-  return { items: Array.isArray(res.data) ? res.data : [] };
+  const data = res.data;
+  if (Array.isArray(data)) return { items: data };
+  if (Array.isArray(data?.items)) return { items: data.items };
+  return { items: [] };
 }
 
 export async function createTransaction(payload: TransactionInput): Promise<Transaction> {
+  const idempotencyKey =
+    typeof crypto !== "undefined" && "randomUUID" in crypto
+      ? crypto.randomUUID()
+      : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
   const res = await api<Transaction>("/transactions", {
     method: "POST",
     body: JSON.stringify(payload),
+    headers: {
+      "Idempotency-Key": idempotencyKey
+    }
   });
   if (!res.ok) throw new Error(res.error.message);
   return res.data;

@@ -46,7 +46,7 @@ export default function SignupView() {
     setIsSubmitting(false);
 
     if (!res.ok) {
-      setFormError(res.error || "Nao foi possivel criar sua conta.");
+      setFormError(res.error || "Não foi possível criar sua conta.");
       return;
     }
 
@@ -61,7 +61,7 @@ export default function SignupView() {
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">Cadastro</p>
             <h1 className="mt-2 text-2xl font-bold text-zinc-900">Criar conta</h1>
             <p className="mt-1 text-sm text-zinc-600">
-              Crie sua conta e acesse o painel. Para liberar acoes, ative um plano com trial de 15 dias.
+              Crie sua conta e acesse o painel. Para liberar ações, ative um plano com trial de 15 dias.
             </p>
           </header>
 
@@ -94,7 +94,7 @@ export default function SignupView() {
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              hint="Minimo de 6 caracteres."
+              hint="Mínimo de 6 caracteres."
               autoComplete="new-password"
             />
 
@@ -112,7 +112,7 @@ export default function SignupView() {
                 </Link>{" "}
                 e a{" "}
                 <Link href={routes.public.privacidade} className="font-semibold underline">
-                  Politica de Privacidade
+                  Política de Privacidade
                 </Link>
                 .
               </span>
@@ -129,7 +129,7 @@ export default function SignupView() {
                 href={routes.auth.login}
                 className="text-sm font-semibold text-zinc-600 hover:underline"
               >
-                Ja tenho conta
+                Já tenho conta
               </Link>
 
               <Button type="submit" disabled={disabled || isSubmitting}>
@@ -152,15 +152,15 @@ export default function SignupView() {
         <Card className="p-6">
           <h2 className="text-lg font-bold text-zinc-900">Como funciona o acesso</h2>
           <ul className="mt-3 space-y-2 text-sm text-zinc-600">
-            <li>• Voce entra e consegue ver o painel em modo leitura.</li>
-            <li>• Para registrar lancamentos/metas/contas, e necessario ativar um plano.</li>
-            <li>• O trial e de 15 dias e exige cadastro do cartao.</li>
+            <li>• Você entra e consegue ver o painel em modo leitura.</li>
+            <li>• Para registrar lançamentos/metas/contas, é necessário ativar um plano.</li>
+            <li>• O trial é de 15 dias e exige cadastro do cartão.</li>
           </ul>
 
           <div className="mt-5">
             <Link href={routes.public.pricing}>
               <Button variant="secondary" className="w-full">
-                Ver planos e beneficios
+                Ver planos e benefícios
               </Button>
             </Link>
           </div>

@@ -5,13 +5,15 @@ import AccessBadge from "./AccessBadge";
 
 const items = [
   { href: routes.app.dashboard, label: "Dashboard", icon: DashboardIcon },
-  { href: routes.app.lancamentos, label: "Lancamentos", icon: SwapIcon },
+  { href: routes.app.lancamentos, label: "Lançamentos", icon: SwapIcon },
   { href: routes.app.metas, label: "Metas", icon: TargetIcon },
   { href: routes.app.contas, label: "Contas", icon: WalletIcon },
-  { href: routes.app.notificacoes, label: "Notificacoes", icon: BellIcon },
+  { href: routes.app.notificacoes, label: "Notificações", icon: BellIcon },
   { href: routes.app.assistente, label: "Assistente", icon: SparkIcon },
   { href: routes.app.planos, label: "Planos", icon: CardIcon },
-  { href: routes.app.configuracoes, label: "Configuracoes", icon: GearIcon }
+  { href: (routes as any)?.app?.moto ?? "/moto", label: "Moto", icon: MotoIcon },
+  { href: (routes as any)?.app?.suporte ?? "/suporte", label: "Suporte", icon: LifeBuoyIcon },
+  { href: routes.app.configuracoes, label: "Configurações", icon: GearIcon }
 ];
 
 export default function Sidebar({ currentPath }: { currentPath: string }) {
@@ -64,9 +66,7 @@ export default function Sidebar({ currentPath }: { currentPath: string }) {
 
         <div className="rounded-[18px] border border-teal-200/70 bg-teal-50/80 p-4 text-xs text-teal-700">
           <p className="text-xs font-semibold">Dica premium</p>
-          <p className="mt-1">
-            Ative um plano para liberar lancamentos, metas, contas e o assistente Cash.
-          </p>
+          <p className="mt-1">Ative um plano para liberar lançamentos, metas, contas e o assistente Cash.</p>
         </div>
       </div>
     </aside>
@@ -137,6 +137,31 @@ function CardIcon() {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <rect x="3" y="5" width="18" height="14" rx="2" />
       <path d="M3 10h18" />
+    </svg>
+  );
+}
+
+function MotoIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="6.5" cy="17" r="2.5" />
+      <circle cx="17.5" cy="17" r="2.5" />
+      <path d="M9 17h3l2.2-6.2a2 2 0 0 1 1.9-1.3H20" />
+      <path d="M6.5 17h2.2l3.2-6.4a2 2 0 0 1 1.8-1.1h2.2" />
+      <path d="M10 9h3" />
+    </svg>
+  );
+}
+
+function LifeBuoyIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="3" />
+      <path d="M7.05 7.05l3.18 3.18" />
+      <path d="M16.95 16.95l-3.18-3.18" />
+      <path d="M7.05 16.95l3.18-3.18" />
+      <path d="M16.95 7.05l-3.18 3.18" />
     </svg>
   );
 }
