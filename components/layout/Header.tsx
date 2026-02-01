@@ -54,6 +54,18 @@ export default function Header({
         <div>
           <p className="text-sm font-semibold text-teal-600">Bem-vindo, {userName}</p>
           <h1 className="text-2xl font-bold text-zinc-900">{title}</h1>
+          <div className="mt-3 lg:hidden">
+            <div className="relative w-full">
+              <input
+                aria-label="Buscar"
+                placeholder="Buscar no painel"
+                className="h-11 w-full rounded-full border border-zinc-200/80 bg-white/90 px-4 pr-10 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              />
+              <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400">
+                <SearchIcon />
+              </span>
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-1 items-center gap-3 lg:justify-end">

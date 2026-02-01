@@ -38,7 +38,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       <div className="flex min-h-dvh flex-col lg:pl-[260px]">
         <Header title={resolveTitle(pathname || "")} status={billing?.status || "none"} canWrite={Boolean(billing?.canWrite)} />
 
-        <main id="conteudo" className="flex-1 px-4 pb-28 pt-6 sm:px-6 lg:px-10 2xl:px-14 lg:pb-10">
+        <main
+          id="conteudo"
+          className="flex-1 px-4 pb-[calc(7rem+env(safe-area-inset-bottom))] pt-6 sm:px-6 lg:px-10 2xl:px-14 lg:pb-10"
+        >
           <EnvWarning className="mb-4" />
           {children}
         </main>
