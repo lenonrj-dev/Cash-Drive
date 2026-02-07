@@ -15,7 +15,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const toHomeHash = (hash) => {
+  const toHomeHash = (hash?: string) => {
     const safeHash = hash?.startsWith('#') ? hash : `#${hash || ''}`
     return `/${safeHash}`
   }

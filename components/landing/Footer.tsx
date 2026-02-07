@@ -1,7 +1,7 @@
 import { routes } from '@/lib/routes'
 
 export default function Footer() {
-  const toHomeHash = (hash) => {
+  const toHomeHash = (hash?: string) => {
     const safeHash = hash?.startsWith('#') ? hash : `#${hash || ''}`
     return `/${safeHash}`
   }
