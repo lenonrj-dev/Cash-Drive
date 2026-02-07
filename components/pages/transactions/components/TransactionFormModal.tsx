@@ -154,7 +154,7 @@ export default function TransactionFormModal({
           <label className="block text-sm font-semibold text-zinc-800">
             Tipo
             <select
-              className="mt-1 h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
+              className="mt-1 h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 outline-none transition focus:border-teal-500 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               value={type}
               onChange={(e) => setType(e.target.value as TransactionInput["type"])}
               disabled={disabled}
@@ -185,7 +185,7 @@ export default function TransactionFormModal({
                   key={x.label}
                   type="button"
                   onClick={() => applyQuickCat(x.label)}
-                  className="rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                  className="rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   {x.label}
                 </button>

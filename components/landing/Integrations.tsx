@@ -5,22 +5,22 @@ import { Zap, Shield, Cloud, Smartphone } from 'lucide-react'
 
 const items = [
   {
-    icon: <Smartphone className="text-blue-600" />,
+    icon: <Smartphone className="text-teal-600" />,
     title: 'WhatsApp e notificações',
     description: 'Receba alertas de metas, contas e manutenção direto no celular.'
   },
   {
-    icon: <Cloud className="text-blue-600" />,
+    icon: <Cloud className="text-teal-600" />,
     title: 'Sincronização segura',
     description: 'Seus dados ficam protegidos e acessíveis em qualquer dispositivo.'
   },
   {
-    icon: <Zap className="text-blue-600" />,
+    icon: <Zap className="text-teal-600" />,
     title: 'Importação simplificada',
     description: 'Integre extratos e planilhas para acelerar lançamentos.'
   },
   {
-    icon: <Shield className="text-blue-600" />,
+    icon: <Shield className="text-teal-600" />,
     title: 'Privacidade em primeiro lugar',
     description: 'Você controla quem vê seu saldo e quando compartilhar dados.'
   }
@@ -38,7 +38,7 @@ export default function Integrations() {
           className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
         >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">Integrações</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-teal-600">Integrações</p>
             <h2 className="mt-3 text-3xl font-bold text-slate-900">Conecte o Cash Drive ao seu dia</h2>
             <p className="mt-3 text-slate-600 max-w-xl">
               Integrações pensadas para acelerar sua rotina: alertas rápidos, importação de dados e segurança em cada

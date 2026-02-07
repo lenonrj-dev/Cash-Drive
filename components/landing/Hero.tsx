@@ -9,7 +9,7 @@ import { routes } from '@/lib/routes'
 export default function Hero() {
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140%] h-[1000px] bg-gradient-to-b from-blue-50 via-white to-white rounded-[100%] -z-10 blur-3xl opacity-60" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140%] h-[1000px] bg-gradient-to-b from-teal-50 via-white to-white rounded-[100%] -z-10 blur-3xl opacity-60" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
@@ -23,7 +23,7 @@ export default function Hero() {
           <h1 className="text-5xl lg:text-7xl font-extrabold text-slate-900 tracking-tight mb-6 leading-[1.1]">
             Controle financeiro na rua,
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-emerald-500">
               em tempo real.
             </span>
           </h1>
@@ -38,14 +38,14 @@ export default function Hero() {
               Entrar e testar grátis
             </Button>
             <Button href={routes.auth.login} variant="secondary" className="w-full sm:w-auto text-lg px-8 h-14 gap-2">
-              <Zap size={20} className="text-blue-600" />
+              <Zap size={20} className="text-teal-600" />
               Ver planos
             </Button>
           </div>
         </motion.div>
 
         <div className="relative mx-auto max-w-5xl group perspective-1000">
-          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000" />
+          <div className="absolute -inset-1 bg-gradient-to-r from-teal-600 to-emerald-400 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000" />
 
           <div className="relative bg-slate-900 rounded-2xl border border-slate-800 shadow-2xl overflow-hidden aspect-[16/10] transform transition-transform duration-700 hover:scale-[1.01] hover:rotate-x-2">
             <div className="bg-slate-800/50 backdrop-blur-md p-4 border-b border-white/5 flex items-center justify-between">
@@ -59,7 +59,7 @@ export default function Hero() {
 
             <div className="p-6 grid grid-cols-12 gap-6 h-full text-left">
               <div className="col-span-2 hidden md:block space-y-4 border-r border-white/5 pr-4">
-                <div className="h-8 w-8 bg-blue-600 rounded-lg mb-8" />
+                <div className="h-8 w-8 bg-teal-600 rounded-lg mb-8" />
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div key={i} className="h-2 w-full bg-slate-800 rounded-full" />
                 ))}
@@ -98,10 +98,10 @@ export default function Hero() {
                   {[30, 45, 25, 60, 75, 50, 80, 95, 55, 40, 65, 85].map((h, i) => (
                     <div
                       key={i}
-                      className="w-full bg-blue-600/20 rounded-t-sm hover:bg-blue-500 transition-colors relative group"
+                      className="w-full bg-teal-600/20 rounded-t-sm hover:bg-teal-500 transition-colors relative group"
                       style={{ height: `${h}%` }}
                     >
-                      <div className="absolute bottom-0 w-full bg-blue-600 h-1/2 opacity-50 rounded-t-sm" />
+                      <div className="absolute bottom-0 w-full bg-teal-600 h-1/2 opacity-50 rounded-t-sm" />
                     </div>
                   ))}
                 </div>

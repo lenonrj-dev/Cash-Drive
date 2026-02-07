@@ -1,4 +1,4 @@
-﻿/* frontend/components/pages/support/components/SupportChat.tsx */
+/* frontend/components/pages/support/components/SupportChat.tsx */
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -253,7 +253,7 @@ export default function SupportChat({ userName, userEmail }: { userName: string;
                 <Link key={t.key} href={t.ctaHref || "/dashboard"} className="inline-flex">
                   <button
                     type="button"
-                    className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                    className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     aria-label={t.label}
                   >
                     <span className="inline-block h-2 w-2 rounded-full bg-teal-400" />
@@ -324,7 +324,7 @@ export default function SupportChat({ userName, userEmail }: { userName: string;
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     placeholder="Descreva o problema/dúvida. Ex.: Ao criar um lançamento, o valor não aparece no saldo..."
-                    className="mt-2 h-28 w-full resize-none rounded-2xl border border-zinc-200/70 bg-white/90 p-3 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                    className="mt-2 h-28 w-full resize-none rounded-2xl border border-zinc-200/70 bg-white/90 p-3 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     aria-label="Mensagem para o suporte"
                     onKeyDown={(e) => {
                       if (e.key === "Enter" && !e.shiftKey) {
@@ -345,7 +345,7 @@ export default function SupportChat({ userName, userEmail }: { userName: string;
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
                       placeholder="Ex.: Dúvida de cobrança"
-                      className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/70 bg-white/90 px-3 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                      className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/70 bg-white/90 px-3 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                       aria-label="Assunto do ticket"
                     />
                   </div>
@@ -355,7 +355,7 @@ export default function SupportChat({ userName, userEmail }: { userName: string;
                     <select
                       value={topic}
                       onChange={(e) => setTopic(e.target.value)}
-                      className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/70 bg-white/90 px-3 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                      className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/70 bg-white/90 px-3 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                       aria-label="Selecionar assunto"
                     >
                       {SUPPORT_TOPICS.map((t) => (
@@ -372,7 +372,7 @@ export default function SupportChat({ userName, userEmail }: { userName: string;
                     <select
                       value={priority}
                       onChange={(e) => setPriority(e.target.value as any)}
-                      className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/70 bg-white/90 px-3 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                      className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/70 bg-white/90 px-3 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                       aria-label="Selecionar prioridade"
                     >
                       <option value="baixa">Baixa</option>

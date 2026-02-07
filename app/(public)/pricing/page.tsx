@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Planos",
-  description: "Conheca os planos do Cash Drive e o trial de 15 dias."
+  description: "Conheca os planos do Rota Fin e o trial de 15 dias."
 };
 
 export default function Page() {

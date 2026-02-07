@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Login",
-  description: "Acesse sua conta no Cash Drive."
+  description: "Acesse sua conta no Rota Fin."
 };
 
 export default function Page() {

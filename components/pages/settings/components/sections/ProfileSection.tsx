@@ -81,7 +81,7 @@ export default function ProfileSection({
             hint="Opcional"
             value={profile.company}
             onChange={(v) => setProfile((p) => ({ ...p, company: v }))}
-            placeholder="Ex.: Cash Drive"
+            placeholder="Ex.: Rota Fin"
           />
 
           <SelectField

@@ -201,7 +201,7 @@ export default function MotoDailyLog({
               value={kmPerLiter}
               onChange={(e) => setKmPerLiter(e.target.value)}
               placeholder="Ex.: 30"
-              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Média de consumo em km por litro"
             />
             <p className="mt-2 text-xs text-zinc-500">Se você não souber, comece com uma estimativa e ajuste com o histórico.</p>
@@ -214,7 +214,7 @@ export default function MotoDailyLog({
               value={pricePerLiter}
               onChange={(e) => setPricePerLiter(e.target.value)}
               placeholder="Ex.: 5,89"
-              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Preço da gasolina por litro"
             />
             <p className="mt-2 text-xs text-zinc-500">Ajuda a prever gasto do dia e comparar economia.</p>
@@ -253,7 +253,7 @@ export default function MotoDailyLog({
               type="date"
               value={dateISO}
               onChange={(e) => setDateISO(e.target.value)}
-              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Data do registro"
             />
           </label>
@@ -264,7 +264,7 @@ export default function MotoDailyLog({
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Ex.: trânsito forte, chuva, rota longa..."
-              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Observações do dia"
             />
           </label>
@@ -278,7 +278,7 @@ export default function MotoDailyLog({
               value={odometerStart}
               onChange={(e) => setOdometerStart(e.target.value)}
               placeholder="Ex.: 51230"
-              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Quilometragem inicial do dia"
             />
           </label>
@@ -290,7 +290,7 @@ export default function MotoDailyLog({
               value={odometerEnd}
               onChange={(e) => setOdometerEnd(e.target.value)}
               placeholder="Ex.: 51310"
-              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Quilometragem final do dia"
             />
           </label>
@@ -304,7 +304,7 @@ export default function MotoDailyLog({
               value={fuelStartLiters}
               onChange={(e) => setFuelStartLiters(e.target.value)}
               placeholder="Ex.: 3"
-              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Litros no tanque no início do dia"
             />
             <p className="mt-2 text-xs text-zinc-500">Pode ser estimado (meio tanque, 1/4, etc.).</p>
@@ -317,7 +317,7 @@ export default function MotoDailyLog({
               value={fuelEndLiters}
               onChange={(e) => setFuelEndLiters(e.target.value)}
               placeholder="Ex.: 1"
-              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Litros no tanque ao final do dia"
             />
             <p className="mt-2 text-xs text-zinc-500">Isso permite calcular consumo real (km/l) com mais precisão.</p>
@@ -341,7 +341,7 @@ export default function MotoDailyLog({
                 value={refuelLiters}
                 onChange={(e) => setRefuelLiters(e.target.value)}
                 placeholder="Ex.: 4"
-                className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 aria-label="Litros abastecidos"
               />
             </label>
@@ -352,7 +352,7 @@ export default function MotoDailyLog({
                 value={refuelNote}
                 onChange={(e) => setRefuelNote(e.target.value)}
                 placeholder="Ex.: posto X, corrida longa, promoção..."
-                className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 aria-label="Nota do abastecimento"
               />
             </label>
@@ -377,7 +377,7 @@ export default function MotoDailyLog({
                   <button
                     type="button"
                     onClick={() => removeRefuel(r.id)}
-                    className="inline-flex h-9 items-center justify-center rounded-full border border-zinc-200/80 bg-white px-3 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                    className="inline-flex h-9 items-center justify-center rounded-full border border-zinc-200/80 bg-white px-3 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     aria-label="Remover abastecimento"
                   >
                     Remover
@@ -447,7 +447,7 @@ export default function MotoDailyLog({
               setError(null);
               setSuccess(null);
             }}
-            className="inline-flex h-11 items-center justify-center rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+            className="inline-flex h-11 items-center justify-center rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             aria-label="Limpar formulário"
           >
             Limpar
@@ -496,7 +496,7 @@ export default function MotoDailyLog({
                   <button
                     type="button"
                     onClick={() => onRemoveLog(l.id)}
-                    className="inline-flex h-10 items-center justify-center rounded-full border border-zinc-200/80 bg-white px-4 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                    className="inline-flex h-10 items-center justify-center rounded-full border border-zinc-200/80 bg-white px-4 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                     aria-label="Remover registro"
                   >
                     Remover

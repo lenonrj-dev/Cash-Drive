@@ -56,7 +56,7 @@ export default function TransactionsFilters({
             <span className="text-xs font-semibold text-zinc-500">De</span>
             <input
               type="date"
-              className="h-10 rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="h-10 rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               value={from}
               onChange={(e) => onFrom(e.target.value)}
               disabled={range !== "custom"}
@@ -67,7 +67,7 @@ export default function TransactionsFilters({
             <span className="text-xs font-semibold text-zinc-500">Até</span>
             <input
               type="date"
-              className="h-10 rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="h-10 rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               value={to}
               onChange={(e) => onTo(e.target.value)}
               disabled={range !== "custom"}
@@ -77,7 +77,7 @@ export default function TransactionsFilters({
           <label className="flex flex-col gap-1">
             <span className="text-xs font-semibold text-zinc-500">Tipo</span>
             <select
-              className="h-10 rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="h-10 rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               value={type}
               onChange={(e) => onType(e.target.value as TransactionType | "")}
               aria-label="Filtrar por tipo"

@@ -57,7 +57,7 @@ export default function GoalsFilters({
               value={query}
               onChange={(e) => onQueryChange(e.target.value)}
               placeholder="Ex.: meta do dia, aluguel, manutenção..."
-              className="mt-1 h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
+              className="mt-1 h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 outline-none transition focus:border-teal-500 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             />
           </label>
         </div>
@@ -69,7 +69,7 @@ export default function GoalsFilters({
               aria-label="Filtrar por período"
               value={kind}
               onChange={(e) => onKindChange(e.target.value as GoalKindFilter)}
-              className="mt-1 h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
+              className="mt-1 h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 outline-none transition focus:border-teal-500 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               <option value="all">Todas</option>
               <option value="daily">Diárias</option>
@@ -87,7 +87,7 @@ export default function GoalsFilters({
               aria-label="Ordenar metas"
               value={sort}
               onChange={(e) => onSortChange(e.target.value as SortKey)}
-              className="mt-1 h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
+              className="mt-1 h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 outline-none transition focus:border-teal-500 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             >
               <option value="deadline_asc">Prazo (mais próximo)</option>
               <option value="deadline_desc">Prazo (mais distante)</option>

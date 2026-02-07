@@ -15,11 +15,16 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const toHomeHash = (hash) => {
+    const safeHash = hash?.startsWith('#') ? hash : `#${hash || ''}`
+    return `/${safeHash}`
+  }
+
   const links = [
-    { href: '#how', label: 'Como funciona' },
-    { href: '#features', label: 'Recursos' },
-    { href: '#pricing', label: 'Preços' },
-    { href: '#faq', label: 'FAQ' }
+    { href: toHomeHash('#how'), label: 'Como funciona' },
+    { href: toHomeHash('#features'), label: 'Recursos' },
+    { href: toHomeHash('#pricing'), label: 'Preços' },
+    { href: toHomeHash('#faq'), label: 'FAQ' }
   ]
 
   return (
@@ -31,12 +36,24 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">
-              C
+          <a
+            href="/"
+            aria-label="Ir para a página inicial"
+            className="flex items-center gap-2 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+          >
+            <div className="w-10 h-10 overflow-hidden flex items-center justify-center bg-white">
+              <img
+                src="https://res.cloudinary.com/dwf2uc6ot/image/upload/v1770490281/RotaFIn_zykanw.png"
+                alt="Logo da RotaFin"
+                width={32}
+                height={32}
+                loading="eager"
+                decoding="async"
+                className="w-full h-full object-contain"
+              />
             </div>
-            <span className="text-xl font-bold text-slate-900 tracking-tight">Cash Drive</span>
-          </div>
+            <span className="text-xl font-bold text-slate-900 tracking-tight">RotaFin</span>
+          </a>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
@@ -44,7 +61,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-slate-600 hover:text-blue-600 font-medium text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
+                className="text-slate-600 hover:text-teal-700 font-medium text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 rounded"
               >
                 {link.label}
               </a>
@@ -54,7 +71,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             <a
               href={routes.auth.login}
-              className="text-slate-900 font-semibold text-sm hover:text-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
+              className="text-slate-900 font-semibold text-sm hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 rounded"
             >
               Entrar
             </a>
@@ -65,7 +82,7 @@ export default function Navbar() {
 
           {/* Mobile Toggle */}
           <button
-            className="md:hidden text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
+            className="md:hidden text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 rounded"
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
@@ -86,7 +103,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="text-slate-600 font-medium p-2 hover:bg-slate-50 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+              className="text-slate-600 font-medium p-2 hover:bg-slate-50 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
               onClick={() => setIsOpen(false)}
             >
               {link.label}

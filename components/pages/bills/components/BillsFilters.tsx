@@ -63,7 +63,7 @@ export default function BillsFilters({
                   onChange={(e) => onQueryChange(e.target.value)}
                   placeholder="Ex: Internet, aluguel, energia"
                   aria-label="Buscar contas pelo nome"
-                  className="h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 pr-10 text-sm text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
+                  className="h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 pr-10 text-sm text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-teal-500 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 />
                 <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400">
                   <SearchIcon />
@@ -76,7 +76,7 @@ export default function BillsFilters({
             <label className="block text-sm font-semibold text-zinc-800">
               Ordenar
               <select
-                className="mt-1 h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
+                className="mt-1 h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 outline-none transition focus:border-teal-500 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 value={sort}
                 onChange={(e) => onSortChange(e.target.value as SortKey)}
                 aria-label="Ordenar contas"
@@ -94,7 +94,7 @@ export default function BillsFilters({
             <label className="block text-sm font-semibold text-zinc-800">
               Recorrência
               <select
-                className="mt-1 h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
+                className="mt-1 h-11 w-full rounded-xl border border-zinc-200/80 bg-white px-3 text-sm text-zinc-900 outline-none transition focus:border-teal-500 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 value={recurring}
                 onChange={(e) => onRecurringChange(e.target.value as RecurringFilter)}
                 aria-label="Filtrar por recorrência"

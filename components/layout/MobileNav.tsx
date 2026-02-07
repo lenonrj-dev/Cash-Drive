@@ -1,4 +1,4 @@
-﻿/* frontend/components/layout/MobileNav.tsx */
+/* frontend/components/layout/MobileNav.tsx */
 "use client";
 
 import Link from "next/link";
@@ -109,7 +109,7 @@ export default function MobileNav({ currentPath }: { currentPath: string }) {
                   ref={closeBtnRef}
                   type="button"
                   onClick={closeSheet}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200/80 bg-white text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200/80 bg-white text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                   aria-label="Fechar"
                 >
                   <XIcon />

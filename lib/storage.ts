@@ -1,7 +1,7 @@
 /* frontend/lib/storage.ts */
 import { STORAGE_KEYS, type ThemeMode } from "./constants";
 
-const LEGACY_TOKEN_KEY = "cashdrive:token";
+const LEGACY_TOKEN_KEY = "rotafin:token";
 
 export function getToken(): string | null {
   if (typeof window === "undefined") return null;

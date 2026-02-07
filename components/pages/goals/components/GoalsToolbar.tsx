@@ -1,4 +1,4 @@
-﻿/* frontend/components/pages/goals/components/GoalsToolbar.tsx */
+/* frontend/components/pages/goals/components/GoalsToolbar.tsx */
 "use client";
 
 import Link from "next/link";
@@ -42,7 +42,7 @@ export default function GoalsToolbar({
               type="button"
               onClick={onToggleHelp}
               className={[
-                "inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-semibold shadow-sm transition focus:outline-none focus:ring-2 focus:ring-teal-200",
+                "inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-semibold shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
                 helpOpen
                   ? "border-teal-200 bg-teal-50 text-teal-700"
                   : "border-zinc-200/80 bg-white text-zinc-700 hover:bg-zinc-50"

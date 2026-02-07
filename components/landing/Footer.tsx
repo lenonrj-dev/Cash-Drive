@@ -1,11 +1,16 @@
 import { routes } from '@/lib/routes'
 
 export default function Footer() {
+  const toHomeHash = (hash) => {
+    const safeHash = hash?.startsWith('#') ? hash : `#${hash || ''}`
+    return `/${safeHash}`
+  }
+
   const productLinks = [
-    { label: 'Recursos', href: '#features' },
-    { label: 'Como funciona', href: '#how' },
-    { label: 'Preços', href: '#pricing' },
-    { label: 'FAQ', href: '#faq' }
+    { label: 'Recursos', href: toHomeHash('#features') },
+    { label: 'Como funciona', href: toHomeHash('#how') },
+    { label: 'Preços', href: toHomeHash('#pricing') },
+    { label: 'FAQ', href: toHomeHash('#faq') }
   ]
   const supportLinks = [
     { label: 'Suporte', href: '/suporte' },
@@ -24,10 +29,18 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">
-                C
+              <div className="w-10 h-10 overflow-hidden flex items-center justify-center bg-slate-900">
+                <img
+                  src="https://res.cloudinary.com/dwf2uc6ot/image/upload/v1770490281/RotaFIn_zykanw.png"
+                  alt="Logo da Rota Fin"
+                  width={32}
+                  height={32}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <span className="text-xl font-bold text-white">Cash Drive</span>
+              <span className="text-xl font-bold text-white">Rota Fin</span>
             </div>
             <p className="text-slate-400 text-sm mb-6">
               O painel financeiro pensado para quem vive na rua, com metas claras e contas sempre em dia.
@@ -41,7 +54,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="hover:text-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
+                    className="hover:text-teal-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded"
                   >
                     {link.label}
                   </a>
@@ -57,7 +70,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="hover:text-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
+                    className="hover:text-teal-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded"
                   >
                     {link.label}
                   </a>
@@ -73,7 +86,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="hover:text-blue-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 rounded"
+                    className="hover:text-teal-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded"
                   >
                     {link.label}
                   </a>
@@ -84,9 +97,9 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-          <p>© 2026 Cash Drive. Feito com cuidado para entregadores.</p>
+          <p>© 2026 Rota Fin. Feito com cuidado para entregadores.</p>
           <div className="flex items-center gap-3">
-            <span className="text-xs text-slate-500">Atendimento: suporte@cashdrive.com</span>
+            <span className="text-xs text-slate-500">Atendimento: suporte@rotafin.com</span>
           </div>
         </div>
       </div>

@@ -58,8 +58,8 @@ function resolveTitle(path: string) {
   if (path.startsWith(routes.app.metas)) return "Metas";
   if (path.startsWith(routes.app.contas)) return "Contas";
   if (path.startsWith(routes.app.notificacoes)) return "Notificações";
-  if (path.startsWith(routes.app.assistente)) return "Assistente Cash";
+  if (path.startsWith(routes.app.assistente)) return "Assistente Rota";
   if (path.startsWith(routes.app.configuracoes)) return "Configurações";
   if (path.startsWith(routes.app.planos)) return "Planos";
-  return "Cash Drive";
+  return "Rota Drive";
 }

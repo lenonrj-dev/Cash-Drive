@@ -13,13 +13,14 @@ type ButtonProps = ButtonAsButton | ButtonAsLink
 
 export default function Button(props: ButtonProps) {
   const { variant = 'primary', className = '', children } = props
-  const baseStyle = 'inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all duration-200 transform active:scale-95'
+  const baseStyle =
+    'inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all duration-200 transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white disabled:cursor-not-allowed disabled:opacity-60'
 
   const variants = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/30',
-    secondary: 'bg-white text-slate-800 hover:bg-slate-50 border border-slate-200 shadow-sm',
-    ghost: 'bg-transparent text-slate-600 hover:text-blue-600 hover:bg-blue-50',
-    outline: 'border-2 border-white text-white hover:bg-white/10'
+    primary: 'bg-teal-600 text-white hover:bg-teal-700 shadow-lg shadow-teal-600/30',
+    secondary: 'bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200 shadow-sm',
+    ghost: 'bg-transparent text-teal-700 hover:text-teal-800 hover:bg-teal-50',
+    outline: 'border-2 border-teal-200 text-teal-700 hover:bg-teal-50'
   }
 
   if ('href' in props && props.href) {

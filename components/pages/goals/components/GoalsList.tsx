@@ -1,4 +1,4 @@
-﻿/* frontend/components/pages/goals/components/GoalsList.tsx */
+/* frontend/components/pages/goals/components/GoalsList.tsx */
 import Card from "../../../ui/Card";
 import Badge from "../../../ui/Badge";
 import Button from "../../../ui/Button";
@@ -194,9 +194,9 @@ function KindBadge({ kind }: { kind: Kind }) {
     kind === "daily"
       ? "border-teal-200/70 bg-teal-50 text-teal-700"
       : kind === "weekly"
-        ? "border-sky-200/70 bg-sky-50 text-sky-700"
+        ? "border-emerald-200/70 bg-emerald-50 text-emerald-700"
         : kind === "monthly"
-          ? "border-indigo-200/70 bg-indigo-50 text-indigo-700"
+          ? "border-teal-300/70 bg-teal-100 text-teal-800"
           : "border-zinc-200/70 bg-white text-zinc-700";
 
   return <Badge className={cls}>{kindLabel(kind)}</Badge>;

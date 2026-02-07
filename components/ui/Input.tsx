@@ -23,10 +23,12 @@ export default function Input({ label, hint, error, className = "", ...props }: 
         className={[
           "h-11 w-full rounded-xl border px-3 text-sm outline-none transition",
           "border-zinc-200/80 bg-white text-zinc-900 placeholder:text-zinc-400",
-          "focus:border-teal-500 focus:ring-2 focus:ring-teal-200",
+          "focus:border-teal-500 focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
           "",
           "",
-          error ? "border-red-500 focus:border-red-600 focus:ring-red-200" : "",
+          error
+            ? "border-red-500 focus:border-red-600 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            : "",
           className
         ].join(" ")}
       />

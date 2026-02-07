@@ -21,7 +21,7 @@ export default function SwitchInline({
         aria-checked={checked}
         onClick={() => onChange(!checked)}
         className={[
-          "relative inline-flex h-7 w-12 shrink-0 items-center rounded-full border shadow-sm transition focus:outline-none focus:ring-2 focus:ring-teal-200",
+          "relative inline-flex h-7 w-12 shrink-0 items-center rounded-full border shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
           checked ? "border-teal-600 bg-teal-600" : "border-zinc-200 bg-white"
         ].join(" ")}
         aria-label={label}

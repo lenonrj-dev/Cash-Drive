@@ -7,10 +7,10 @@ import AppProviders from "../providers/AppProviders";
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
-  title: { default: "Cash Drive", template: "%s | Cash Drive" },
+  title: { default: "Rota Fin", template: "%s | Rota Fin" },
   description:
-    "Cash Drive - painel financeiro para motoristas e entregadores. Controle de entradas, saídas, metas e contas.",
-  applicationName: "Cash Drive",
+    "Rota Fin - painel financeiro para motoristas e entregadores. Controle de entradas, saídas, metas e contas.",
+  applicationName: "Rota Fin",
   icons: { icon: "/favicon.ico" }
 };
 

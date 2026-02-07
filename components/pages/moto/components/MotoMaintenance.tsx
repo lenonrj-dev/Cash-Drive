@@ -170,7 +170,7 @@ export default function MotoMaintenance({
               value={oilLastOdometer}
               onChange={(e) => setOilLastOdometer(e.target.value)}
               placeholder="Ex.: 52000"
-              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Quilometragem da última troca de óleo"
             />
             {typeof lastOdo === "number" ? (
@@ -186,7 +186,7 @@ export default function MotoMaintenance({
               type="date"
               value={oilLastDate}
               onChange={(e) => setOilLastDate(e.target.value)}
-              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="mt-2 h-11 w-full rounded-2xl border border-zinc-200/80 bg-white px-4 text-sm text-zinc-900 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Data da última troca de óleo"
             />
             <p className="mt-2 text-xs text-zinc-500">Útil para lembrar de trocas anuais quando roda pouco.</p>

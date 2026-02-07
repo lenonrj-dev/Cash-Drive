@@ -102,7 +102,7 @@ export default function ChatShell({ canWrite }: { canWrite: boolean }) {
     <div className="space-y-4">
       <Card>
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">Assistente</p>
-        <h2 className="mt-2 text-lg font-bold text-zinc-900">Assistente Cash</h2>
+        <h2 className="mt-2 text-lg font-bold text-zinc-900">Assistente Rota</h2>
         <p className="mt-1 text-sm text-zinc-600">
           Registre lançamentos por texto. Sempre confirma antes de salvar.
         </p>

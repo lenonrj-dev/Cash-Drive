@@ -63,7 +63,7 @@ export default function SettingsSidebar({
               onClick={() => onSelect(it.key)}
               aria-current={isActive ? "page" : undefined}
               className={[
-                "w-full rounded-2xl border px-4 py-3 text-left shadow-sm transition focus:outline-none focus:ring-2 focus:ring-teal-200",
+                "w-full rounded-2xl border px-4 py-3 text-left shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
                 isActive
                   ? "border-teal-200/70 bg-teal-50/60"
                   : "border-zinc-200/70 bg-white/70 hover:bg-white"

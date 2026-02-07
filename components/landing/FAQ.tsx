@@ -9,7 +9,7 @@ export default function FAQ() {
 
   const faqs = [
     {
-      q: 'O Cash Drive é para quem?',
+      q: 'O Rota Fin é para quem?',
       a: 'Para motoboys, entregadores de app, motoristas e qualquer profissional autônomo que precisa controlar ganhos na rua.'
     },
     {
@@ -46,7 +46,7 @@ export default function FAQ() {
           {faqs.map((item, idx) => (
             <div key={item.q} className="border border-slate-200 rounded-xl overflow-hidden">
               <button
-                className="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                className="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-slate-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                 aria-expanded={openIndex === idx}
               >

@@ -63,7 +63,7 @@ export default function Pricing() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-1.5 text-xs font-semibold text-blue-700">
+          <div className="inline-flex items-center gap-2 rounded-full bg-teal-50 px-4 py-1.5 text-xs font-semibold text-teal-700">
             <Sparkles size={14} /> 15 dias grátis para testar
           </div>
           <h2 className="mt-5 text-3xl md:text-4xl font-bold text-slate-900">Planos que cabem no seu bolso</h2>
@@ -101,11 +101,11 @@ export default function Pricing() {
               >
                 <Card
                   className={`p-8 relative overflow-hidden ${
-                    plan.highlight ? 'border-blue-200 shadow-2xl shadow-blue-200/40' : 'shadow-lg'
+                    plan.highlight ? 'border-teal-200 shadow-2xl shadow-teal-200/40' : 'shadow-lg'
                   }`}
                 >
                   {plan.highlight ? (
-                    <span className="absolute right-6 top-6 rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white">
+                    <span className="absolute right-6 top-6 rounded-full bg-teal-600 px-3 py-1 text-xs font-semibold text-white">
                       Mais popular
                     </span>
                   ) : null}
@@ -126,7 +126,7 @@ export default function Pricing() {
                   </div>
 
                   {cycle === 'annual' ? (
-                    <div className="mt-3 inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+                    <div className="mt-3 inline-flex items-center rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">
                       {savings}
                     </div>
                   ) : null}
@@ -147,7 +147,7 @@ export default function Pricing() {
                   <ul className="mt-6 space-y-3 text-sm text-slate-600">
                     {plan.features.map((feat) => (
                       <li key={feat} className="flex gap-2">
-                        <Check size={16} className="mt-0.5 text-blue-600" />
+                        <Check size={16} className="mt-0.5 text-teal-600" />
                         <span>{feat}</span>
                       </li>
                     ))}

@@ -9,12 +9,20 @@ export default function Sidebar({ currentPath }: { currentPath: string }) {
       <div className="flex h-full flex-col border-r border-zinc-200/70 bg-white/80 px-5 py-6 backdrop-blur">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-teal-600 text-sm font-bold text-white">
-              CD
+            <div className="inline-flex h-10 w-10 items-center justify-center overflow-hidden bg-white">
+              <img
+                src="https://res.cloudinary.com/dwf2uc6ot/image/upload/v1770490281/RotaFIn_zykanw.png"
+                alt="Logo da Rota Fin"
+                width={40}
+                height={40}
+                loading="eager"
+                decoding="async"
+                className="h-full w-full object-contain"
+              />
             </div>
             <div className="leading-tight">
-              <p className="text-sm font-semibold text-zinc-900">Cash Drive</p>
-              <p className="text-xs text-zinc-500">Painel premium</p>
+              <p className="text-sm font-semibold text-zinc-900">Rota Fin</p>
+              <p className="text-xs text-zinc-500">Painel Finanças</p>
             </div>
           </div>
           <AccessBadge />
@@ -52,8 +60,8 @@ export default function Sidebar({ currentPath }: { currentPath: string }) {
         </nav>
 
         <div className="rounded-[18px] border border-teal-200/70 bg-teal-50/80 p-4 text-xs text-teal-700">
-          <p className="text-xs font-semibold">Dica premium</p>
-          <p className="mt-1">Ative um plano para liberar lançamentos, metas, contas e o assistente Cash.</p>
+          <p className="text-xs font-semibold">Dica Rota</p>
+          <p className="mt-1">Ative um plano para liberar lançamentos, metas, contas e o assistente Rota.</p>
         </div>
       </div>
     </aside>

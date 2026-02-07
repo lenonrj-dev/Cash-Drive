@@ -36,7 +36,7 @@ export default function HowItWorks() {
                   transition={{ duration: 0.5, ease: 'easeOut', delay: i * 0.08 }}
                   className="flex gap-4 group"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-slate-50 text-slate-400 font-bold flex items-center justify-center border border-slate-200 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-colors">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-slate-50 text-slate-400 font-bold flex items-center justify-center border border-slate-200 group-hover:bg-teal-600 group-hover:text-white group-hover:border-teal-600 transition-colors">
                     {item.step}
                   </div>
                   <div>
@@ -58,10 +58,10 @@ export default function HowItWorks() {
             <div className="bg-white rounded-2xl shadow-xl p-6 mb-4 transform translate-x-4 border border-slate-100">
               <div className="flex justify-between mb-4">
                 <span className="font-bold text-slate-700">Meta do dia</span>
-                <span className="text-blue-600 font-bold">R$ 200,00</span>
+                <span className="text-teal-600 font-bold">R$ 200,00</span>
               </div>
               <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                <div className="bg-blue-600 h-full w-3/4" />
+                <div className="bg-teal-600 h-full w-3/4" />
               </div>
             </div>
             <div className="bg-white rounded-2xl shadow-xl p-6 transform -translate-x-4 border border-slate-100 relative z-10">

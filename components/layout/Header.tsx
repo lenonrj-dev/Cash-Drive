@@ -1,4 +1,4 @@
-﻿/* frontend/components/layout/Header.tsx */
+/* frontend/components/layout/Header.tsx */
 "use client";
 
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
@@ -59,7 +59,7 @@ export default function Header({
               <input
                 aria-label="Buscar"
                 placeholder="Buscar no painel"
-                className="h-11 w-full rounded-full border border-zinc-200/80 bg-white/90 px-4 pr-10 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                className="h-11 w-full rounded-full border border-zinc-200/80 bg-white/90 px-4 pr-10 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               />
               <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400">
                 <SearchIcon />
@@ -73,7 +73,7 @@ export default function Header({
             <input
               aria-label="Buscar"
               placeholder="Buscar no painel"
-              className="h-11 w-full rounded-full border border-zinc-200/80 bg-white/90 px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="h-11 w-full rounded-full border border-zinc-200/80 bg-white/90 px-4 text-sm text-zinc-900 placeholder:text-zinc-400 shadow-sm focus:border-teal-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
             />
             <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400">
               <SearchIcon />
@@ -86,7 +86,7 @@ export default function Header({
             aria-haspopup="dialog"
             aria-expanded={isOpen}
             onClick={() => setIsOpen(true)}
-            className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200/80 bg-white text-zinc-600 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+            className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200/80 bg-white text-zinc-600 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
           >
             <BellIcon />
             {unreadCount > 0 ? <NotificationsDot /> : null}
@@ -266,7 +266,7 @@ function NotificationsModal({
               ref={closeBtnRef}
               type="button"
               onClick={onClose}
-              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-zinc-200/80 bg-white text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-zinc-200/80 bg-white text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
               aria-label="Fechar"
             >
               <XIcon />
@@ -406,7 +406,7 @@ function NotificationsModal({
                       <Link href="/suporte" onClick={onClose} className="inline-flex">
                         <button
                           type="button"
-                          className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                          className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                           aria-label="Falar com suporte"
                         >
                           <LifeBuoyIcon />
@@ -417,7 +417,7 @@ function NotificationsModal({
                       <Link href="/notificacoes" onClick={onClose} className="inline-flex">
                         <button
                           type="button"
-                          className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                          className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                           aria-label="Abrir central de notificações"
                         >
                           <ExternalIcon />

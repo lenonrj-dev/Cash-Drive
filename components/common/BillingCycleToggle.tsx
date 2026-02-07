@@ -21,10 +21,9 @@ export default function BillingCycleToggle({
   const isAnnual = cycle === "annual";
   const activeClass =
     variant === "landing"
-      ? "bg-blue-600 text-white shadow-md"
+      ? "bg-teal-600 text-white shadow-md"
       : "bg-teal-600 text-white shadow-md";
-  const ringClass =
-    variant === "landing" ? "focus-visible:ring-blue-500" : "focus-visible:ring-teal-500";
+  const ringClass = "focus-visible:ring-teal-500";
 
   return (
     <div className={`flex flex-wrap items-center gap-3 ${className}`}>
@@ -57,7 +56,7 @@ export default function BillingCycleToggle({
         <span
           className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
             variant === "landing"
-              ? "bg-blue-50 text-blue-700"
+              ? "bg-teal-50 text-teal-700"
               : "bg-teal-50 text-teal-700"
           }`}
         >

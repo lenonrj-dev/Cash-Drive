@@ -1,4 +1,4 @@
-﻿/* frontend/components/pages/notifications/NotificationsView.tsx */
+/* frontend/components/pages/notifications/NotificationsView.tsx */
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
@@ -11,7 +11,7 @@ import { listNotifications, markNotificationRead, markAllNotificationsRead } fro
 import type { AppNotification } from "../../../types/api";
 import { formatDateShort } from "../../../lib/format";
 
-const SAVED_KEY = "cashdrive:savedNotifications";
+const SAVED_KEY = "rotafin:savedNotifications";
 
 export default function NotificationsView() {
   const [items, setItems] = useState<AppNotification[]>([]);
@@ -262,7 +262,7 @@ export default function NotificationsView() {
                       type="button"
                       onClick={() => toggleSave(n.id)}
                       className={[
-                        "inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-semibold shadow-sm transition focus:outline-none focus:ring-2 focus:ring-teal-200",
+                        "inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-semibold shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
                         isSaved
                           ? "border-teal-200/70 bg-teal-50 text-teal-700 hover:bg-teal-100/60"
                           : "border-zinc-200/80 bg-white text-zinc-700 hover:bg-zinc-50"
@@ -276,7 +276,7 @@ export default function NotificationsView() {
                     <button
                       type="button"
                       onClick={() => copyNotification(n)}
-                      className="inline-flex items-center gap-2 rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                      className="inline-flex items-center gap-2 rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                       aria-label="Copiar notificação"
                     >
                       <CopyIcon />
@@ -289,7 +289,7 @@ export default function NotificationsView() {
                     >
                       <button
                         type="button"
-                        className="inline-flex items-center gap-2 rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                        className="inline-flex items-center gap-2 rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                         aria-label="Entrar em contato com suporte"
                       >
                         <LifeBuoyIcon />
@@ -300,7 +300,7 @@ export default function NotificationsView() {
                     <Link href="/notificacoes" className="inline-flex">
                       <button
                         type="button"
-                        className="inline-flex items-center gap-2 rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-teal-200"
+                        className="inline-flex items-center gap-2 rounded-full border border-zinc-200/80 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                         aria-label="Abrir central de notificações"
                       >
                         <ExternalIcon />
