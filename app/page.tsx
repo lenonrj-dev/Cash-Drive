@@ -12,13 +12,13 @@ import Newsletter from '@/components/landing/Newsletter'
 import Footer from '@/components/landing/Footer'
 
 export const metadata: Metadata = {
-  title: 'Cash Drive | Controle financeiro para motoboys e entregadores',
+  title: 'Rota Fin | Controle financeiro para motoboys e entregadores',
   description:
-    'Controle entradas e saídas, acompanhe metas diárias, cuide da moto e mantenha as contas em dia com o Cash Drive.',
+    'Controle entradas e saídas, acompanhe metas diárias, cuide da moto e mantenha as contas em dia com o Rota Fin.',
   openGraph: {
-    title: 'Cash Drive | Controle financeiro para motoboys e entregadores',
+    title: 'Rota Fin | Controle financeiro para motoboys e entregadores',
     description:
-      'Controle entradas e saídas, acompanhe metas diárias, cuide da moto e mantenha as contas em dia com o Cash Drive.',
+      'Controle entradas e saídas, acompanhe metas diárias, cuide da moto e mantenha as contas em dia com o Rota Fin.',
     type: 'website',
     url: 'https://cash-drive.vercel.app'
   }
@@ -28,7 +28,7 @@ export default function Home() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: 'Cash Drive',
+    name: 'Rota Fin',
     applicationCategory: 'FinanceApplication',
     description:
       'Dashboard financeiro para motoboys e entregadores: controle de entradas, saídas, metas e manutenção da moto.',
